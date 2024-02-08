@@ -1,12 +1,18 @@
-α
-λ
-φ
-
 # Abstand und Projektion
+
+## Screencast
+
+1. [Youtube]()
+1. [Youtube]()
 
 ## Abstand auf der Kugel
 
+Orthodrome: https://de.wikipedia.org/wiki/Orthodrome
+
+Herleitung:
+
 ![Abstand](angledist.png)
+
 x = R α
 
 <u, v> = |u||v|cos α
@@ -25,3 +31,9 @@ y = r' sin λ = R cos φ sin λ
 x = r' cos λ = R cos φ cos λ
 
 ## Projektion
+
+Mercator-Projektion: https://en.wikipedia.org/wiki/Mercator_projection
+
+## Nachträgliche Ergänzung
+
+`transform_test.go`: Testen der Transformationen
