@@ -1,5 +1,7 @@
 # Konfiguration
 
+Das Parsen der Konfiguration ist in mehrere Abschnitte unterteilt.
+
 ## Beispiel
 
 ~~~~
@@ -36,10 +38,20 @@ query[q1]
 - [Nystrom: Crafting Interpreters](https://craftinginterpreters.com/)
 - [Ball: Writing an Interpreter in Go](https://interpreterbook.com/)
 
-## Tokens
+## Tokens (1. Teil)
 
 - Einzelzeichen: `[ ] ( ) = , |`
 - Digraph: `== !=`
 - Keywords: `config query draw filter style include and or xor not`
 - Identifier: Buchstaben mit _, Zahlen, 1. Zeichen Buchstabe
 - Zahlen: int, float mit Dezimalpunkt, Hexadezimalzahlen mit #
+
+Definition im Paket `tokens`
+
+## Lexer (2. und 3. Teil)
+
+- Entfernen von Blanks und Kommentarten
+- Einfache Zeichen und Digraphs
+- Identifier, Schlüsselwörter, Zahlen, Strings
+
+Definition im Paket `lexer`
