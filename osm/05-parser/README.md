@@ -62,3 +62,5 @@ Definition im Paket `lexer`
 - hier reguläre Ausdrücke:
   - Zahl: `[+-]?[0-9]+(\.[0-9]+)?`
   - Bezeichner: `[a-zA-Z0-9_]+`
+
+![DFA für Zahlen](dfa_number.png)
