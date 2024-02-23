@@ -40,6 +40,8 @@ query[q1]
 
 ## Tokens (1. Teil)
 
+**Screencast** [Youtoube](https://youtu.be/CE_gtv5Mjow)
+
 - Einzelzeichen: `[ ] ( ) = , |`
 - Digraph: `== !=`
 - Keywords: `config query draw filter style include and or xor not`
@@ -50,6 +52,8 @@ Definition im Paket `tokens`
 
 ## Lexer (2. und 3. Teil)
 
+**Screencast**: [Youtube](https://youtu.be/c17gWghwUJs)
+
 - Entfernen von Blanks und Kommentarten
 - Einfache Zeichen und Digraphs
 - Identifier, Schlüsselwörter, Zahlen, Strings
@@ -57,6 +61,8 @@ Definition im Paket `tokens`
 Definition im Paket `lexer`
 
 ## Erkennen von Zahlen, Identifier, Strings
+
+**Screencast**: [Youtube](https://youtu.be/wtwZ2rnk3a0)
 
 - endliche Automaten
 - hier reguläre Ausdrücke:
