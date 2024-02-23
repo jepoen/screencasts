@@ -4,6 +4,7 @@ import (
 	"05-parser/token"
 	"log"
 	"os"
+	"regexp"
 	"strings"
 	"unicode"
 	"unicode/utf8"
@@ -86,8 +87,21 @@ func (lx *Lexer) Next() token.Token {
 	} else if tok, ok := token.Char(lx.ch); ok {
 		lx.readChar()
 		return tok
+		// Fortsetzung
+	} else if isAsciiDigitOrSign(lx.ch) {
+		return lx.readNumber()
+	} else if lx.ch == '#' {
+		return lx.readHexNumber()
+	} else if isAsciiLetter(lx.ch) {
+		val := lx.readIdentifier()
+		if tok, ok := token.Keyword(val); ok {
+			return tok
+		} else {
+			return token.Token{Type: token.ID, Value: val}
+		}
+	} else if isAsciiStrDelim(lx.ch) {
+		return lx.readStr()
 	}
-	// Fortsetzung
 	tok := token.Token{Type: token.INVALID, Value: string(lx.ch)}
 	lx.readChar()
 	return tok
@@ -123,4 +137,72 @@ func (lx *Lexer) skipBlockComment() {
 	lx.skipTo(lx.pos + idx)
 	lx.readChar()
 	lx.readChar()
+}
+
+// Fortsetzung
+func (lx *Lexer) readNumber() token.Token {
+	rex := regexp.MustCompile(`^[+-]?[0-9]+(\.[0-9]+)?`)
+	m := rex.FindStringSubmatchIndex(lx.content[lx.pos:])
+	if m == nil {
+		ch := lx.ch
+		lx.readChar()
+		return token.Token{Type: token.INVALID, Value: string(ch)}
+	}
+	val := lx.content[lx.pos : lx.pos+m[1]]
+	tt := token.INT
+	if m[2] >= 0 {
+		tt = token.FLOAT
+	}
+	lx.skipTo(lx.pos + m[1])
+	return token.Token{Type: tt, Value: val}
+}
+
+func (lx *Lexer) readIdentifier() string {
+	rex := regexp.MustCompile(`^[a-zA-Z_][a-zA-Z0-9_]*`)
+	m := rex.FindStringIndex(lx.content[lx.pos:])
+	// m != nil
+	val := lx.content[lx.pos : lx.pos+m[1]]
+	lx.skipTo(lx.pos + m[1])
+	return val
+}
+
+func (lx *Lexer) readStr() token.Token {
+	delim := lx.ch
+	delimCnt := 0
+	for lx.ch == delim {
+		delimCnt++
+		lx.readChar()
+	}
+	fullDelim := strings.Repeat(string(delim), delimCnt)
+	idx := strings.Index(lx.content[lx.pos:], fullDelim)
+	if idx < 0 {
+		// im Screencast:
+		//lx.readChar()
+		//return token.Token{Type: token.INVALID, Value: string(delim)}
+		// besser für Fehlersuche: bis zum Ende lesen
+		errStr := lx.content[lx.pos : lx.pos+3]
+		lx.skipTo(len(lx.content))
+		return token.Token{Type: token.INVALID, Value: errStr + "...unterminated"}
+	}
+	val := lx.content[lx.pos : lx.pos+idx]
+	lx.skipTo(lx.pos + idx)
+	for i := 0; i < delimCnt; i++ {
+		lx.readChar()
+	}
+	return token.Token{Type: token.STR, Value: val}
+}
+
+func (lx *Lexer) readHexNumber() token.Token {
+	// skip #
+	lx.readChar()
+	rex := regexp.MustCompile(`^[0-9a-fA-F]+`)
+	m := rex.FindStringIndex(lx.content[lx.pos:])
+	if m == nil {
+		ch := lx.ch
+		lx.readChar()
+		return token.Token{Type: token.INVALID, Value: string(ch)}
+	}
+	val := lx.content[lx.pos : lx.pos+m[1]]
+	lx.skipTo(lx.pos + m[1])
+	return token.Token{Type: token.HEX, Value: val}
 }

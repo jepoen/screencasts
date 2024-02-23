@@ -57,6 +57,7 @@ var tokenStr = map[TokenType]string{
 	NE:       "!=",
 	ID:       "ID",
 	CONFIG:   "CONF",
+	INC:      "INC",
 	DRAW:     "DRAW",
 	FILTER:   "FILT",
 	STYLE:    "STY",

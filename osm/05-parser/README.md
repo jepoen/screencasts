@@ -55,3 +55,10 @@ Definition im Paket `tokens`
 - Identifier, Schlüsselwörter, Zahlen, Strings
 
 Definition im Paket `lexer`
+
+## Erkennen von Zahlen, Identifier, Strings
+
+- endliche Automaten
+- hier reguläre Ausdrücke:
+  - Zahl: `[+-]?[0-9]+(\.[0-9]+)?`
+  - Bezeichner: `[a-zA-Z0-9_]+`
