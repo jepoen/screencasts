@@ -71,11 +71,12 @@ func eqStrList(s0, s1 []string) bool {
 // Fortsetzung
 func TestStr(t *testing.T) {
 	content := `"äü"'ab
-cd' """xyz"""
+cd' """xyz""" '''nicht terminiert
 
 `
 	expect := []string{
 		"[STR:äü]", "[STR:ab\ncd]", "[STR:xyz]",
+		"[INV:nic...unterminated]",
 	}
 	lexer := NewLexer("main", content)
 	res := []string{}
@@ -90,10 +91,11 @@ cd' """xyz"""
 
 // TODO: Zahlentest
 func TestNumber(t *testing.T) {
-	content := "123 +42 -23 +1.23 22.444 #aaff3C"
+	content := "123 +42 -23 +1.23 22.444 #aaff3C 23. +"
 	expect := []string{
 		"[INT:123]", "[INT:+42]", "[INT:-23]", "[FLOAT:+1.23]",
 		"[FLOAT:22.444]", "[HEX:aaff3C]",
+		"[INT:23]", "[INV:.]", "[INV:+]",
 	}
 	lexer := NewLexer("main", content)
 	res := []string{}
