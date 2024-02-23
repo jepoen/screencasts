@@ -206,3 +206,65 @@ func (lx *Lexer) readHexNumber() token.Token {
 	lx.skipTo(lx.pos + m[1])
 	return token.Token{Type: token.HEX, Value: val}
 }
+
+// alternativ: Automat selbst geschrieben
+func (lx *Lexer) readNumberDfa() token.Token {
+	const ( // Zustände
+		s_start = iota
+		s_sign
+		s_int
+		s_dec_sep
+		s_dec
+	)
+	state := s_start
+	res := []rune{}
+	for {
+		switch state {
+		case s_start:
+			if isAsciiSign(lx.ch) {
+				res = append(res, lx.ch)
+				state = s_sign
+			} else if isAsciiDigit(lx.ch) {
+				res = append(res, lx.ch)
+				state = s_int
+			} else {
+				ch := lx.ch
+				lx.readChar()
+				return token.Token{Type: token.INVALID, Value: string(ch)}
+			}
+		case s_sign:
+			res = append(res, lx.ch)
+			if isAsciiDigit(lx.ch) {
+				state = s_int
+			} else {
+				ch := lx.ch
+				lx.readChar()
+				return token.Token{Type: token.INVALID, Value: string(ch)}
+			}
+		case s_int:
+			if isAsciiDigit(lx.ch) {
+				res = append(res, lx.ch)
+			} else if lx.ch == '.' {
+				res = append(res, lx.ch)
+				state = s_dec_sep
+			} else { // end of int number
+				return token.Token{Type: token.INT, Value: string(res)}
+			}
+		case s_dec_sep:
+			res = append(res, lx.ch)
+			if isAsciiDigit(lx.ch) {
+				state = s_dec
+			} else {
+				lx.readChar()
+				return token.Token{Type: token.INVALID, Value: string(res)}
+			}
+		case s_dec:
+			if isAsciiDigit(lx.ch) {
+				res = append(res, lx.ch)
+			} else {
+				return token.Token{Type: token.FLOAT, Value: string(res)}
+			}
+		}
+		lx.readChar()
+	}
+}

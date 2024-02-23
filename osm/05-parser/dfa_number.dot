@@ -1,0 +1,13 @@
+digraph Number {
+    rankdir="LR"
+    S [shape=diamond];
+    Int [shape=doublecircle];
+    Dec [shape=doublecircle];
+    S -> Sign [label="'+', '-'"];
+    S -> Int [label="'0'...'9'"];
+    Int -> Int [label="'0'...'9'"];
+    Sign -> Int [label="'0'...'9'"];
+    Int -> DecSep [label="'.'"];
+    DecSep -> Dec [label="'0'...'9'"];
+    Dec -> Dec [label="'0'...'9'"];
+}
