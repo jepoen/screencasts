@@ -61,6 +61,8 @@ Definition im Paket `lexer`
 - endliche Automaten
 - hier reguläre Ausdrücke:
   - Zahl: `[+-]?[0-9]+(\.[0-9]+)?`
-  - Bezeichner: `[a-zA-Z0-9_]+`
+  - Bezeichner: `[a-zA-Z_][a-zA-Z0-9_]*`
+
+DFA für Zahlen:
 
 ![DFA für Zahlen](dfa_number.png)
