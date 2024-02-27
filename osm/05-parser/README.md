@@ -72,3 +72,76 @@ Definition im Paket `lexer`
 DFA für Zahlen:
 
 ![DFA für Zahlen](dfa_number.png)
+
+## Grammatik (4. Teil)
+
+**Screencast**: [Youtube](https://youtu.be/###)
+
+Meta-Ausdrücke:
+
+- `( )?`: wahlweise
+- `( )*`: beliebig oft
+- `//`: Kommentar bis Zeilenende
+
+~~~
+S = ( Entry )*
+
+Entry = ConfigEntry
+      | Include
+      | QueryStep
+      | DrawStep
+
+ConfigEntry = "config" "[" ID "]" "=" ConfigValues
+
+ConfigValues = ValueTuple
+             | ValueSequence
+
+ValueTuple = "(" Value ( "," Value )* ")"
+
+ValueSequence = Value ( Value )
+
+Value = STRING
+      | INT
+      | FLOAT
+      | HEX
+
+Include = "include" STRING ( STRING )*
+
+QueryStep = "query" "[" ID "]" ( "=" STR )?
+
+DrawStep = "draw" "[" ID "]" "(" ( DrawParam )* ")"
+
+DrawParam = DrawStyle
+          | TagFilter
+          | IdFilter
+
+DrawStyle = "style" ( "[" ID "]" )? "(" KV ("," KV)* ")"
+
+KV = ID "=" ValueOrTuple
+
+ValueOrTuple = Value
+             | ValueTuple
+
+TagFilter = "filter" "(" FilterExpr ")"
+
+FilterExpr = TagTerm ( BinOp TagTerm )*  // liefert bool-Wert
+
+TagTerm = TagCmp                         // liefert bool-Wert
+        | "not" TagTerm
+        | "(" FilterExpr ")"
+
+TagCmp = TagOrDefault ( CmpValue )?      // liefert bool-Wert
+
+TagOrDefault = ID ( "|" Value )?         // liefert string-Wert
+
+CmpValue = CmpOp Value
+         | "in" ValueTuple
+
+CmpOp = "=="
+      | "!="
+
+BinOp = "and"
+      | "or"
+
+IdFilter = "osmId" ValueTuple // nur int-Werte erlaubt
+~~~
