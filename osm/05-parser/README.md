@@ -145,3 +145,44 @@ BinOp = "and"
 
 IdFilter = "osmId" ValueTuple // nur int-Werte erlaubt
 ~~~
+
+## Parser 1 (5. Teil)
+
+Implementieren des AST und der Befehle config, include, query
+
+**Screencast**: [Youtube](hUmRQQhSfI)
+
+Beispiel:
+
+~~~
+config[bbox] = (13.9, 50.9, 14.1, 51.1)
+query[empty] = "out qt"
+~~~
+
+AST-Struktur:
+
+~~~mermaid
+classDiagram
+
+Ast *-- ConfigNode
+
+Ast *-- StepNode
+
+ConfigNode <-- ConfigEntry
+
+class ConfigEntry{
+  Key string
+}
+
+ConfigEntry *-- Values
+
+StepNode <-- QueryStep
+
+class QueryStep {
+      Key string
+      Query string
+}
+
+StepNode <-- DrawStep
+
+~~~

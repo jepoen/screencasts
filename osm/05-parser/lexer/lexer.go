@@ -107,6 +107,14 @@ func (lx *Lexer) Next() token.Token {
 	return tok
 }
 
+func (lx *Lexer) FileName() string {
+	return lx.fileName
+}
+
+func (lx *Lexer) TokenLine() int {
+	return lx.tokLine
+}
+
 func (lx *Lexer) skipBlankOrComment() {
 	for !lx.IsEof() {
 		if unicode.IsSpace(lx.ch) {
