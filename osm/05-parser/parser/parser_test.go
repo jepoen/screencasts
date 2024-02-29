@@ -79,7 +79,7 @@ query[q]
 			&QueryStep{"q", nil},
 		},
 	}
-	fi, err := os.CreateTemp("", "tst")
+	fi, err := os.CreateTemp(".", "tst")
 	if err != nil {
 		t.Error(err)
 	}
@@ -89,6 +89,8 @@ query[q]
 	lx := lexer.NewLexer("-", inp)
 	p := NewParser(lx)
 	ast := p.ParseAll()
+	log.Println(fi.Name())
+	os.Remove(fi.Name())
 	log.Println(ast)
 	if ast.String() != expected.String() {
 		t.Errorf("\nexpected %s\ngot      %s",
