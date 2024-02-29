@@ -105,7 +105,6 @@ func (n *NumValue) String() string {
 	default:
 		return "?" + n.Value
 	}
-	return n.Value
 }
 
 func NewNumValue(tok token.Token) *NumValue {
