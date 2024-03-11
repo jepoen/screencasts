@@ -37,6 +37,10 @@ func (bbox Bbox) ToOverpassStr() string {
 	)
 }
 
+func (bbox Bbox) String() string {
+	return fmt.Sprintf("(%s)", bbox.ToOverpassStr())
+}
+
 func Radians(deg float64) float64 {
 	return deg * math.Pi / 180.0
 }
