@@ -150,7 +150,7 @@ IdFilter = "osmId" ValueTuple // nur int-Werte erlaubt
 
 Implementieren des AST und der Befehle config, include, query
 
-**Screencast**: [Youtube](https://youtu.be/iE3vd5zPCEI)
+
 
 Beispiel:
 
@@ -180,9 +180,13 @@ StepNode <-- QueryStep
 
 class QueryStep {
       Key string
-      Query string
+ConfigEntry *-- Values
+
+StepNode <-- QueryStep
+
+class QueryStep {
+      Key string
 }
-
-StepNode <-- DrawStep
-
 ~~~
+
+## Einlesen der Konfiguration (6. Teil)

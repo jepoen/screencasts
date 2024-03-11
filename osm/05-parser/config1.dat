@@ -1,0 +1,17 @@
+// Testkarte
+config[overpass_url] = "https://overpass-api.de/api/interpreter"
+config[bbox] = (13.9,50.8,14.2,51.0)
+config[output_file] = "map0.png"
+config[projection] = "Mercator"
+
+query[ways] = `
+[bbox: {{bbox}}];
+( way; >;);
+out qt;
+`
+/* noch nicht implementiert
+draw[way_line] (
+    filter ("railway"=="rail"),
+    style (lineWidth=2.5, strokeColor=#000000, connectWays=1)
+)
+*/
