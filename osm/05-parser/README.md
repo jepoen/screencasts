@@ -183,6 +183,8 @@ class QueryStep {
       Value string
 }
 
+class DrawStep
+
 ~~~
 
 ## Einlesen der Konfiguration (6. Teil)
