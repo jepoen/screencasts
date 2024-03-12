@@ -43,7 +43,7 @@ query[q1]
 **Screencast** [Youtoube](https://youtu.be/CE_gtv5Mjow)
 
 - Einzelzeichen: `[ ] ( ) = , |`
-- Digraph: `== !=`
+- Digrams: `== !=`
 - Keywords: `config query draw filter style include and or xor not`
 - Identifier: Buchstaben mit _, Zahlen, 1. Zeichen Buchstabe
 - Zahlen: int, float mit Dezimalpunkt, Hexadezimalzahlen mit #
@@ -198,3 +198,8 @@ class DrawStep
 Verarbeiten der `config`-Einträge einer Konfigurationsdatei
 
 **Screencast** [Youtube](https://youtu.be/9IHtgFO_b60)
+
+Nachträglich ergänzt:
+
+- `config[projection]`
+- Anpassung `Projection`: implementiert fmt.Stringer
