@@ -1,12 +1,20 @@
 package geo
 
-import "math"
+import (
+	"fmt"
+	"math"
+)
 
 type Projection interface {
+	fmt.Stringer
 	Project(coord Coord) Point
 }
 
 type MercatorProjection struct{}
+
+func (p *MercatorProjection) String() string {
+	return "MercatorProjection"
+}
 
 func NewMercatorProjection() MercatorProjection {
 	return MercatorProjection{}

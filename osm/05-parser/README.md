@@ -183,6 +183,12 @@ class QueryStep {
       Value string
 }
 
+StepNode <-- DrawStep
+
+DrawStep o-- StyleEntry
+
+DrawStep -- TagFilter
+
 class DrawStep
 
 ~~~

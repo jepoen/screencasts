@@ -49,7 +49,7 @@ func TestDigraphs(t *testing.T) {
 		{'=', '!', Token{INVALID, "=!"}, false},
 	}
 	for _, c := range testCases {
-		tok, ok := Digraph(c.r0, c.r1)
+		tok, ok := Digram(c.r0, c.r1)
 		if ok != c.ok {
 			t.Errorf("%c%c: expected %T got %T", c.r0, c.r1, c.ok, ok)
 		}

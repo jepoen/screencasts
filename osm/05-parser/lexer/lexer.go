@@ -80,7 +80,7 @@ func (lx *Lexer) Next() token.Token {
 	if lx.IsEof() {
 		return token.Token{Type: token.EOF, Value: ""}
 	}
-	if tok, ok := token.Digraph(lx.ch, lx.peekChar()); ok {
+	if tok, ok := token.Digram(lx.ch, lx.peekChar()); ok {
 		lx.readChar()
 		lx.readChar()
 		return tok

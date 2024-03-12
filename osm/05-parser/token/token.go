@@ -7,7 +7,7 @@ import "fmt"
 // - tokenStr-Konstante definieren
 // - Zuordnung Eingabe → Token
 //   - Einzelzeichen: in charTokens
-//   - Digraphs: in digraphs
+//   - Digrams: in digrams
 //   - Schlüsselwörter: in keywords
 
 type TokenType int
@@ -122,14 +122,14 @@ func Char(r rune) (Token, bool) {
 	}
 }
 
-var digraphs = map[string]TokenType{
+var digrams = map[string]TokenType{
 	"==": EQ,
 	"!=": NE,
 }
 
-func Digraph(r0, r1 rune) (Token, bool) {
+func Digram(r0, r1 rune) (Token, bool) {
 	s := string([]rune{r0, r1})
-	if tt, ok := digraphs[s]; ok {
+	if tt, ok := digrams[s]; ok {
 		return Token{tt, s}, true
 	} else {
 		return Token{INVALID, s}, false

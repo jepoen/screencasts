@@ -22,6 +22,7 @@ type Config struct {
 	OutputFile  string
 	MmPerKm     float64
 	PtPerMm     float64
+	Projection  geo.Projection
 	functions   map[string]ConfigFuncs
 }
 
@@ -34,6 +35,7 @@ func NewConfig() *Config {
 	c.registerFunctions("output_file", c.evalOutputFile, c.checkOutputFile, c.strOutputFile)
 	c.registerFunctions("mm_per_km", c.evalMmPerKm, c.checkMmPerKm, c.strMmPerKm)
 	c.registerFunctions("pt_per_mm", c.evalPtPerMm, c.checkPtPerMm, c.strPtPerMM)
+	c.registerFunctions("projection", c.evalProjection, c.checkProjection, c.strProjection)
 	return c
 }
 
@@ -219,4 +221,31 @@ func (c *Config) checkPtPerMm() bool {
 
 func (c *Config) strPtPerMM() string {
 	return fmt.Sprintf("%f", c.PtPerMm)
+}
+
+func (c *Config) evalProjection(values []parser.ValueNode) {
+	if len(values) < 1 {
+		log.Fatalf("overpass_url: at least 1 value needed, got %d", len(values))
+	}
+	if projType, ok := values[0].(*parser.StrValue); ok {
+		switch strings.ToLower(projType.Value) {
+		case "mercator":
+			c.Projection = &geo.MercatorProjection{}
+		default:
+			log.Fatalf("projection: unknown %s", projType.Value)
+		}
+	} else {
+		log.Fatalf("overpass_url: need string, got %s", values[0])
+	}
+}
+
+func (c *Config) checkProjection() bool {
+	if c.Projection == nil {
+		log.Fatal("Missing projection")
+	}
+	return true
+}
+
+func (c *Config) strProjection() string {
+	return c.Projection.String()
 }
