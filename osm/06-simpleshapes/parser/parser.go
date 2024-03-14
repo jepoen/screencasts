@@ -70,7 +70,7 @@ func (p *Parser) ParseAll() *Ast {
 	return ast
 }
 
-func (p *Parser) parseConfig() ConfigNode {
+func (p *Parser) parseConfig() SettingsNode {
 	// p.curToken.Type == token.CONFIG
 	p.nextToken()
 	p.match(token.LBRACKET)

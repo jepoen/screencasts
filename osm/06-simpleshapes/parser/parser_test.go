@@ -25,7 +25,7 @@ config[seq] = "albers" 50 70.5
 query[xyz] = "out qt"
 `
 	expected := &Ast{
-		ConfigList: []ConfigNode{
+		ConfigList: []SettingsNode{
 			&ConfigEntry{Key: "bbox", Values: []ValueNode{
 				&NumValue{NUM_INT, "1"},
 				&NumValue{NUM_FLOAT, "2.3"},
@@ -64,7 +64,7 @@ config[c] = "s"
 query[q]
 `
 	expected := &Ast{
-		ConfigList: []ConfigNode{
+		ConfigList: []SettingsNode{
 			&ConfigEntry{"a", []ValueNode{
 				&NumValue{NUM_INT, "1"},
 			}},

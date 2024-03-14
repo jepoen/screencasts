@@ -13,9 +13,9 @@ type AstNode interface {
 	astNode()
 }
 
-type ConfigNode interface {
+type SettingsNode interface {
 	AstNode
-	configNode()
+	settingsNode()
 }
 
 type StepNode interface {
@@ -29,7 +29,7 @@ type ValueNode interface {
 }
 
 type Ast struct {
-	ConfigList []ConfigNode
+	ConfigList []SettingsNode
 	StepList   []StepNode
 }
 
@@ -41,7 +41,7 @@ func (n *Ast) String() string {
 
 func NewAst() *Ast {
 	return &Ast{
-		ConfigList: []ConfigNode{},
+		ConfigList: []SettingsNode{},
 		StepList:   []StepNode{},
 	}
 }
@@ -56,8 +56,8 @@ type ConfigEntry struct {
 	Values []ValueNode
 }
 
-func (n *ConfigEntry) astNode()    {}
-func (n *ConfigEntry) configNode() {}
+func (n *ConfigEntry) astNode()      {}
+func (n *ConfigEntry) settingsNode() {}
 
 func (n *ConfigEntry) String() string {
 	sValues := []string{}
