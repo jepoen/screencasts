@@ -22,7 +22,7 @@ func main() {
 	log.Println(env)
 	// Process Steps
 	process.ProcessAst(env, ast)
-	// Darstellung
+	// Darstellung TODO
 	draw(env)
 	process.Save(env)
 }

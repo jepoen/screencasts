@@ -65,7 +65,7 @@ func TestQuery(t *testing.T) {
 	}
 	// Debug-Ausgabe
 	//fmt.Println(osm)
-	if !osmEq(expected, osm) {
+	if !osmEq(expected, *osm) {
 		t.Errorf("\nexpected %v\ngot      %v", expected, osm)
 	}
 }
