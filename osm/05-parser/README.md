@@ -209,6 +209,8 @@ Nachträglich ergänzt:
 - Definition der Umgebung (Environment)
 - Verarbeitung der Queries
 - Verwenden der Umgebung zum Zeichnen
+- Anpassung Abfragen, Transformation (Rückgabe Pointer, Berechnung 
+  Bildrechteck)
 
 **Screencast** [Youtube](https)
 
