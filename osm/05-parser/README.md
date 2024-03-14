@@ -203,3 +203,18 @@ Nachträglich ergänzt:
 
 - `config[projection]`
 - Anpassung `Projection`: implementiert fmt.Stringer
+
+## Einbau in Kartenprogramm (7. Teil)
+
+- Definition der Umgebung (Environment)
+- Verarbeitung der Queries
+- Verwenden der Umgebung zum Zeichnen
+
+**Screencast** [Youtube](https)
+
+Mögliches Refactoring:
+
+- Umbenennen `ConfigNode` → `SettingNode`, `EvalConfig` → `EvalSettings`,
+  da außer `config[…]` auch noch Pfade, Symbole, … global definiert werden
+  sollen
+- Verschieben von `config.EvalConfig()` nach `env.EvalSettings()`

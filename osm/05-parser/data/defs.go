@@ -32,8 +32,8 @@ type OsmData struct {
 	RelTags   map[int64]TagMap
 }
 
-func NewOsmData() OsmData {
-	return OsmData{
+func NewOsmData() *OsmData {
+	return &OsmData{
 		Nodes:     map[int64]geo.Coord{},
 		Ways:      map[int64]IdList{},
 		Relations: map[int64]RelMemberList{},

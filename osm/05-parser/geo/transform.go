@@ -1,6 +1,7 @@
 package geo
 
 import (
+	"image"
 	"math"
 )
 
@@ -25,8 +26,8 @@ type Transformer struct {
 
 func NewTransformer(proj Projection, bbox Bbox, mmPkm, ptPmm float64,
 	orient Orientation,
-) Transformer {
-	tr := Transformer{
+) *Transformer {
+	tr := &Transformer{
 		proj:   proj,
 		bbox:   bbox,
 		mmPkm:  mmPkm,
@@ -63,4 +64,10 @@ func (tr Transformer) Transform(coord Coord) Point {
 		y = tr.p1.Y - y
 	}
 	return Point{x, y}
+}
+
+func (tr *Transformer) ImgRect() image.Rectangle {
+	wi := int(tr.p1.X - tr.p0.X)
+	he := int(tr.p1.Y - tr.p0.Y)
+	return image.Rectangle{image.Point{0, 0}, image.Point{wi, he}}
 }

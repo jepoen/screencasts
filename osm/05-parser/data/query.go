@@ -12,10 +12,10 @@ import (
 	"strings"
 )
 
-func GetData(url string, query string) (OsmData, error) {
+func GetData(url string, query string) (*OsmData, error) {
 	stream, err := httpQuery(url, query)
 	if err != nil {
-		return OsmData{}, err
+		return &OsmData{}, err
 	}
 	return parseXml(stream)
 }
@@ -27,7 +27,7 @@ func httpQuery(url string, query string) (io.ReadCloser, error) {
 
 // Erzeugt ein Dictionary der Node-Koordinaten
 // sowie ein Dictionary der Wege mit den Node-Referenzen
-func parseXml(stream io.Reader) (OsmData, error) {
+func parseXml(stream io.Reader) (*OsmData, error) {
 	d := xml.NewDecoder(stream)
 	osm := NewOsmData()
 	var currWay IdList
