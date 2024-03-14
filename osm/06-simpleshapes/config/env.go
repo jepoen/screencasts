@@ -22,9 +22,9 @@ type Environment struct {
 
 func NewEnvironment(ast *parser.Ast) *Environment {
 	env := &Environment{
-		Config: EvalConfig(ast),
-		Query:  map[string]string{},
+		Query: map[string]string{},
 	}
+	env.EvalSettings(ast)
 	env.Tr = geo.NewTransformer(
 		env.Config.Projection,
 		env.Config.Bbox,
@@ -40,4 +40,21 @@ func NewEnvironment(ast *parser.Ast) *Environment {
 
 func (env *Environment) String() string {
 	return fmt.Sprintf("Config: %s", env.Config)
+}
+
+func (env *Environment) EvalSettings(ast *parser.Ast) {
+	env.Config = NewConfig()
+	// TODO: Basic Styles, Paths, Symbols, ...
+	for _, entry := range ast.ConfigList {
+		switch ty := entry.(type) {
+		case *parser.ConfigEntry:
+			if cf, ok := env.Config.functions[ty.Key]; ok {
+				cf.eval(ty.Values)
+			} else {
+				log.Printf("config: unknown option %s", ty.Key)
+			}
+		default:
+			log.Printf("unknown setting %s", entry)
+		}
+	}
 }
