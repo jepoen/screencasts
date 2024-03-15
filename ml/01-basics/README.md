@@ -2,7 +2,9 @@
 
 ## Screencasts
 
-- [Einführung](youtube)
+- [Einführung](https://youtu.be/pSYRaCWCEBY)
+- [Miniconda-Installation](https://youtu.be/hKf4jWWqhXs)
+- [Arbeit mit Jupyter-Notebook](https://youtu.be/jFfIA5dW4ew)
 
 ## Literatur
 
