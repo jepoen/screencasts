@@ -1,3 +1,3 @@
 # Machine Learning
 
-- [Grundlagen](basics)
+- [Grundlagen](01-basics)
