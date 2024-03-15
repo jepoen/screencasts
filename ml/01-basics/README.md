@@ -47,3 +47,7 @@
 - Neuronale Netze
 - Convolutional Networks
 - NLP
+
+## Installation Miniconda
+
+- Link: [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
