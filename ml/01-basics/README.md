@@ -53,3 +53,8 @@
 ## Installation Miniconda
 
 - Link: [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
+
+## Gutenberg-Katalog
+
+- [Gutenberg.org](https://www.gutenberg.org/)
+- [Gutenberg-Katalog](https://www.gutenberg.org/cache/epub/feeds/)
