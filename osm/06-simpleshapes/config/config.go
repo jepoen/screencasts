@@ -39,23 +39,6 @@ func NewConfig() *Config {
 	return c
 }
 
-func EvalConfig(ast *parser.Ast) *Config {
-	c := NewConfig()
-	for _, entry := range ast.ConfigList {
-		switch ty := entry.(type) {
-		case *parser.ConfigEntry:
-			if cf, ok := c.functions[ty.Key]; ok {
-				cf.eval(ty.Values)
-			} else {
-				log.Printf("config: unknown option %s", ty.Key)
-			}
-		default:
-			log.Printf("unknown config entry %s", entry)
-		}
-	}
-	return c
-}
-
 func (c *Config) String() string {
 	res := []string{}
 	res = append(res, "Config:")

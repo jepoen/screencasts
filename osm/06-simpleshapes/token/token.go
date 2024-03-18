@@ -23,7 +23,8 @@ const (
 	RBRACKET
 	ASSIGN
 	DEFAULT
-	// digraphs
+	SIMILAR
+	// digrams
 	EQ
 	NE
 	// identifier
@@ -31,6 +32,11 @@ const (
 	// keywords
 	CONFIG
 	INC
+	AND
+	OR
+	XOR
+	NOT
+	IN
 	QUERY
 	DRAW
 	FILTER
@@ -53,11 +59,17 @@ var tokenStr = map[TokenType]string{
 	RBRACKET: "]",
 	ASSIGN:   "=",
 	DEFAULT:  "|",
+	SIMILAR:  "~",
 	EQ:       "==",
 	NE:       "!=",
 	ID:       "ID",
 	CONFIG:   "CONF",
 	INC:      "INC",
+	AND:      "and",
+	OR:       "or",
+	XOR:      "xor",
+	NOT:      "not",
+	IN:       "in",
 	DRAW:     "DRAW",
 	FILTER:   "FILT",
 	STYLE:    "STY",
@@ -112,6 +124,7 @@ var charTokens = map[rune]TokenType{
 	']': RBRACKET,
 	'=': ASSIGN,
 	'|': DEFAULT,
+	'~': SIMILAR,
 }
 
 func Char(r rune) (Token, bool) {
@@ -141,6 +154,11 @@ var keywords = map[string]TokenType{
 	"include": INC,
 	"query":   QUERY,
 	"draw":    DRAW,
+	"and":     AND,
+	"or":      OR,
+	"xor":     XOR,
+	"not":     NOT,
+	"in":      IN,
 	"filter":  FILTER,
 	"style":   STYLE,
 }
