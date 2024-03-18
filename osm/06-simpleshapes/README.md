@@ -4,6 +4,8 @@ Dieses Kapitel ist in mehrere Abschnitte unterteilt.
 
 ## Offene Punkte
 
+- Tokens ergänzt (~, and, or, xor, not, in)
+
 ### Beispielkonfiguration
 
 ~~~~
