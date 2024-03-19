@@ -104,7 +104,7 @@ or --> c
 
 ## Parsen des Draw-Steps (Teil 1 und 2)
 
-- AST-Definition: *Screencast* [Youtube](x)
-- Parser: *Screencast* [Youtube](x)
+- AST-Definition: *Screencast* [Youtube](https://youtu.be/I9wie_7KWCg)
+- Parser: *Screencast* [Youtube](https://youtu.be/O_pRFMpPn4c)
 
 Korrektur: Leere Styleoptionen (Schlüssel ohne Wert) lassen wir vorläufig nicht zu.
