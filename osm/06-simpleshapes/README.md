@@ -77,6 +77,8 @@ BinOp = "and"
 IdFilter = "osmId" ValueTuple // nur int-Werte erlaubt
 ~~~
 
+### Reihenfolge der Verarbeitung
+
 ~~~
 a and b or c
 ~~~
@@ -99,3 +101,10 @@ and --> a
 and --> b
 or --> c
 ~~~
+
+## Parsen des Draw-Steps (Teil 1 und 2)
+
+- AST-Definition: *Screencast* [Youtube](x)
+- Parser: *Screencast* [Youtube](x)
+
+Korrektur: Leere Styleoptionen (Schlüssel ohne Wert) lassen wir vorläufig nicht zu.
