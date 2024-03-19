@@ -85,24 +85,24 @@ func (n *BoolOp) String() string {
 }
 
 // evaluates to string value
-type KeyOrDefault struct {
-	Key     string
+type TagOrDefault struct {
+	Tag     string
 	Default ValueNode // or nil
 }
 
-func (n *KeyOrDefault) astNode() {}
-func (n *KeyOrDefault) String() string {
+func (n *TagOrDefault) astNode() {}
+func (n *TagOrDefault) String() string {
 	if n.Default == nil {
-		return n.Key
+		return n.Tag
 	} else {
-		return fmt.Sprintf("(keyOrDefault %s %s)", n.Key, n.Default)
+		return fmt.Sprintf("(keyOrDefault %s %s)", n.Tag, n.Default)
 	}
 }
 
 // evaluates to bool
 type CmpOp struct {
 	Op    CmpOperator
-	Left  *KeyOrDefault
+	Left  *TagOrDefault
 	Right ValueNode
 }
 

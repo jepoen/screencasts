@@ -110,7 +110,7 @@ func (p *Parser) parseTagCmp() TagFilterNode {
 	}
 }
 
-func (p *Parser) parseTagOrDefault() *KeyOrDefault {
+func (p *Parser) parseTagOrDefault() *TagOrDefault {
 	// p.curToken is ID or String
 	key := p.curToken.Value
 	p.nextToken()
@@ -119,8 +119,8 @@ func (p *Parser) parseTagOrDefault() *KeyOrDefault {
 		p.nextToken()
 		defaultVal = p.parseValue()
 	}
-	return &KeyOrDefault{
-		Key:     key,
+	return &TagOrDefault{
+		Tag:     key,
 		Default: defaultVal,
 	}
 }
