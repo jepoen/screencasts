@@ -1,4 +1,4 @@
 # Machine Learning
 
 - [Grundlagen](01-basics)
-- [Pandas](02-pandas)
+- [Pandas und NumPy](02-pandas)
