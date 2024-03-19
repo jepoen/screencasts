@@ -143,10 +143,12 @@ func (p *Parser) parseInclude() *Ast {
 	return ast
 }
 
+/*
 func (p *Parser) parseDraw() StepNode {
 	panic("not implemented")
 
 }
+*/
 
 func (p *Parser) parseQuery() StepNode {
 	// skip query keyword

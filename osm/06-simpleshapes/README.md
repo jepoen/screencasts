@@ -77,3 +77,25 @@ BinOp = "and"
 IdFilter = "osmId" ValueTuple // nur int-Werte erlaubt
 ~~~
 
+~~~
+a and b or c
+~~~
+
+Falsch:
+~~~mermaid
+flowchart TB
+
+and --> a
+and --> or
+or --> b
+or --> c
+~~~
+Richtig:
+~~~mermaid
+flowchart TB
+
+or --> and
+and --> a
+and --> b
+or --> c
+~~~
