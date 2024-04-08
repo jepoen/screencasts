@@ -107,4 +107,7 @@ or --> c
 - AST-Definition: *Screencast* [Youtube](https://youtu.be/I9wie_7KWCg)
 - Parser: *Screencast* [Youtube](https://youtu.be/O_pRFMpPn4c)
 
-Korrektur: Leere Styleoptionen (Schlüssel ohne Wert) lassen wir vorläufig nicht zu.
+Korrekturen:
+
+- Leere Styleoptionen (Schlüssel ohne Wert) lassen wir vorläufig nicht zu.
+- in `parseDraw()` fehlt der Fehlerfall im Video

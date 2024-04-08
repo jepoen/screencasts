@@ -21,6 +21,9 @@ L:
 			res.Filter = p.parseFilter()
 		case token.RPAREN:
 			break L
+		default: // Fehlerfall, fehlt im Video
+			p.error(fmt.Sprintf("expected style or filter got %s",
+				p.curToken))
 		}
 	}
 	p.match(token.RPAREN)
