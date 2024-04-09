@@ -111,3 +111,33 @@ Korrekturen:
 
 - Leere Styleoptionen (Schlüssel ohne Wert) lassen wir vorläufig nicht zu.
 - in `parseDraw()` fehlt der Fehlerfall im Video
+
+## Filterausdrücke
+
+**Screencast** [Youtube]()
+
+Ausdruck:
+~~~
+draw[way_line] (
+      filter (higway=='primary' and tunnel|'no' != 'yes')
+)
+~~~
+AST:
+~~~mermaid
+graph TD
+and --> eq1[eq]
+eq1 --> key1[key]
+key1 --> hw1[highway]
+eq1 --> v1["'primary'"]
+and --> ne
+ne --> key2[keyOrDefault]
+key2 --> tunnel
+key2 --> v2["'no'"]
+ne --> v3["'yes'"]
+~~~
+Tags:
+| tag     | value      |
+| ------- | -------    |
+| highway | primary    |
+| name    | Bergstraße |
+| speed:limit| 30 |

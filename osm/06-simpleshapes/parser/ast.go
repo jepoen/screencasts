@@ -26,6 +26,7 @@ type StepNode interface {
 type ValueNode interface {
 	AstNode
 	valueNode()
+	StrVal() string
 }
 
 type Ast struct {
@@ -107,6 +108,10 @@ func (n *NumValue) String() string {
 	}
 }
 
+func (n *NumValue) StrVal() string {
+	return n.String()
+}
+
 func NewNumValue(tok token.Token) *NumValue {
 	ty := NUM_INVALID
 	switch tok.Type {
@@ -129,6 +134,10 @@ func (n *StrValue) valueNode() {}
 
 func (n *StrValue) String() string {
 	return fmt.Sprintf("\"%s\"", n.Value)
+}
+
+func (n *StrValue) StrVal() string {
+	return n.Value
 }
 
 type QueryStep struct {
