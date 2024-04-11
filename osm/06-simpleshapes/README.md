@@ -141,3 +141,12 @@ Tags:
 | highway | primary    |
 | name    | Bergstraße |
 | speed:limit| 30 |
+
+## Verarbeiten der Draw Steps
+
+- einfache Linienzüge
+- einfache Polygone
+- Schließen von »Rundwegen«
+- Style wird noch nicht ausgewertet
+
+**Screencast** [Youtube]()
