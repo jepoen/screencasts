@@ -12,12 +12,16 @@ query[ways] = `
 out qt;
 `
 
-draw[wayPolygon] (
-    filter (natural=="wood" or landuse=="forest")
+draw[way_polygon] (
+    filter (natural=="wood" or
+         landuse=="forest")
     style (fillColor=#00ff00)
 )
 
-draw[wayLine] (
+draw[way_line] (
     filter ("railway"=="rail")
-    style (lineWidth=2.5, strokeColor=#000000, connectWays=1)
+    style (lineWidth=2.5,
+      strokeColor=#000000,
+      connectWays=1
+    )
 )

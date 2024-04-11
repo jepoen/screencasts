@@ -1,5 +1,6 @@
 package render
 
+/* wird nicht mehr benötigt
 import (
 	"06-simpleshapes/data"
 	"06-simpleshapes/geo"
@@ -198,3 +199,4 @@ func RenderLakes(
 		}
 	}
 }
+*/

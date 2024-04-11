@@ -16,6 +16,13 @@ func (iL IdList) Swap(i, k int) {
 	iL[i], iL[k] = iL[k], iL[i]
 }
 
+func (iL IdList) IsClosed() bool {
+	if len(iL) == 0 {
+		return false
+	}
+	return iL[0] == iL[len(iL)-1]
+}
+
 type MemberType int
 
 const (

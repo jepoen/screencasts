@@ -15,10 +15,8 @@ func ProcessAst(env *config.Environment, ast *parser.Ast) {
 		switch ty := stepNode.(type) {
 		case *parser.QueryStep:
 			evalQuery(ty, env)
-		/*
-			case *parser.DrawStep:
-				evalDraw(ty, env)
-		*/
+		case *parser.DrawStep: // vorher auskommentiert
+			evalDraw(ty, env)
 		default:
 			log.Printf("unknown step: %s", ty)
 		}

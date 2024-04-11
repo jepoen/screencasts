@@ -5,8 +5,6 @@ import (
 	"06-simpleshapes/config"
 	"06-simpleshapes/parser"
 	"06-simpleshapes/process"
-	"06-simpleshapes/render"
-	"image/color"
 	"log"
 	"os"
 )
@@ -23,10 +21,11 @@ func main() {
 	// Process Steps
 	process.ProcessAst(env, ast)
 	// Darstellung TODO
-	draw(env)
+	//draw(env)
 	process.Save(env)
 }
 
+/*
 func draw(env *config.Environment) {
 	env.Ctx.SetFillColor(color.White)
 	env.Ctx.Clear()
@@ -36,3 +35,4 @@ func draw(env *config.Environment) {
 	render.RenderRailways(env.Ctx, *env.Data, *env.Tr)
 	render.RenderHighways(env.Ctx, *env.Data, *env.Tr)
 }
+*/
