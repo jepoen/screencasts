@@ -155,4 +155,4 @@ Tags:
 
 - Extrahieren des Zahlen- bzw. Farbwerts aus `ValueNode`-Objekten
 
-**Screencast** [Youtube](x)
+**Screencast** [Youtube](https://youtu.be/t5dVhmoy9R0)
