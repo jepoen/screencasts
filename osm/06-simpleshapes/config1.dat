@@ -19,6 +19,10 @@ draw[way_polygon] (
 )
 
 draw[way_line] (
+  filter (waterway)
+  style (lineWidth=1, strokeColor="aqua")
+)
+draw[way_line] (
     filter ("railway"=="rail")
     style (lineWidth=2.5,
       strokeColor=#000000,

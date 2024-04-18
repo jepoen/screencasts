@@ -150,3 +150,9 @@ Tags:
 - Style wird noch nicht ausgewertet
 
 **Screencast** [Youtube](https://youtu.be/W1sHKmFOi6g)
+
+## Umwandlung der Value Nodes in konkrete Datentypen
+
+- Extrahieren des Zahlen- bzw. Farbwerts aus `ValueNode`-Objekten
+
+**Screencast** [Youtube](x)
