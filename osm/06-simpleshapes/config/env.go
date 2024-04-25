@@ -16,13 +16,15 @@ type Environment struct {
 	Tr     *geo.Transformer
 	Canvas *image.RGBA
 	Ctx    *draw2dimg.GraphicContext
+	Styles map[string]*Style
 	Query  map[string]string
 	Data   *data.OsmData
 }
 
 func NewEnvironment(ast *parser.Ast) *Environment {
 	env := &Environment{
-		Query: map[string]string{},
+		Styles: map[string]*Style{},
+		Query:  map[string]string{},
 	}
 	env.EvalSettings(ast)
 	env.Tr = geo.NewTransformer(
@@ -35,6 +37,7 @@ func NewEnvironment(ast *parser.Ast) *Environment {
 	log.Println(env.Tr.ImgRect())
 	env.Canvas = image.NewRGBA(env.Tr.ImgRect())
 	env.Ctx = draw2dimg.NewGraphicContext(env.Canvas)
+	env.Styles["_"] = CreateBaseStyle()
 	return env
 }
 
