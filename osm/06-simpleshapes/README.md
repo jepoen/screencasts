@@ -156,3 +156,7 @@ Tags:
 - Extrahieren des Zahlen- bzw. Farbwerts aus `ValueNode`-Objekten
 
 **Screencast** [Youtube](https://youtu.be/t5dVhmoy9R0)
+
+## Auswerten und Anwenden der Style-Optionen
+
+**Screencast** [Youtube](https://youtu.be/Vt_7L2Q4zck)
