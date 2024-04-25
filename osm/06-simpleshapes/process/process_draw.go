@@ -14,8 +14,8 @@ import (
 type DrawFunction func(step *parser.DrawStep, env *config.Environment)
 
 var drawFunctions = map[string]DrawFunction{
-	"way_line":    drawWayLine,
-	"way_polygon": drawWayPolygon,
+	"wayLine":    drawWayLine,
+	"wayPolygon": drawWayPolygon,
 }
 
 func evalDraw(step *parser.DrawStep, env *config.Environment) {

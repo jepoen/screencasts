@@ -31,10 +31,10 @@ func NewConfig() *Config {
 		functions: map[string]ConfigFuncs{},
 	}
 	c.registerFunctions("bbox", c.evalBbox, c.checkBbox, c.strBbox)
-	c.registerFunctions("overpass_url", c.evalOverpassUrl, c.checkOverpassUrl, c.strOverpassUrl)
-	c.registerFunctions("output_file", c.evalOutputFile, c.checkOutputFile, c.strOutputFile)
-	c.registerFunctions("mm_per_km", c.evalMmPerKm, c.checkMmPerKm, c.strMmPerKm)
-	c.registerFunctions("pt_per_mm", c.evalPtPerMm, c.checkPtPerMm, c.strPtPerMM)
+	c.registerFunctions("overpassUrl", c.evalOverpassUrl, c.checkOverpassUrl, c.strOverpassUrl)
+	c.registerFunctions("outputFile", c.evalOutputFile, c.checkOutputFile, c.strOutputFile)
+	c.registerFunctions("mmPerKm", c.evalMmPerKm, c.checkMmPerKm, c.strMmPerKm)
+	c.registerFunctions("ptPerMm", c.evalPtPerMm, c.checkPtPerMm, c.strPtPerMM)
 	c.registerFunctions("projection", c.evalProjection, c.checkProjection, c.strProjection)
 	return c
 }

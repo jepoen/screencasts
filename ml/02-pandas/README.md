@@ -1,4 +1,4 @@
-# Pandas und NumPy
+# Pandas
 
 ## Screencasts
 
