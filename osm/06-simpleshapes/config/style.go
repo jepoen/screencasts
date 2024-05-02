@@ -23,12 +23,16 @@ type Style struct {
 	StrokeColor color.RGBA
 	// added after video
 	FillColor color.RGBA
-	CloseWays bool
+	//
+	LineDash   []float64
+	DashOffset float64
+	CloseWays  bool
 }
 
 func NewStyle(parent *Style) *Style {
 	style := &Style{
 		functions: map[string]styleFunc{},
+		LineDash:  []float64{},
 	}
 	if parent != nil {
 		*style = *parent
@@ -38,6 +42,8 @@ func NewStyle(parent *Style) *Style {
 	style.registerStyle("strokeColor", style.evalStrokeColor, style.applyStrokeColor)
 	// added after video
 	style.registerStyle("fillColor", style.evalFillColor, style.applyFillColor)
+	style.registerStyle("lineDash", style.evalLineDash, style.applyLineDash)
+	style.registerStyle("dashOffset", style.evalDashOffset, nil)
 	style.registerStyle("closeWays", style.evalCloseWays, nil)
 	return style
 }
@@ -50,8 +56,9 @@ func (s *Style) registerStyle(key string, es evalFunc, as applyFunc) {
 }
 
 func (s *Style) String() string {
-	return fmt.Sprintf("lw %f stroke %v",
-		s.LineWidth, s.StrokeColor,
+	return fmt.Sprintf("lw %f stroke %v fill %v dash %v/%v",
+		s.LineWidth, s.StrokeColor, s.FillColor,
+		s.LineDash, s.DashOffset,
 	)
 }
 
@@ -123,7 +130,7 @@ func (s *Style) evalLineWidth(opt *parser.StyleOption) {
 }
 
 func (s *Style) applyLineWidth(env *Environment) {
-	env.Ctx.SetLineWidth(s.LineWidth)
+	env.Ctx.SetLineWidth(s.LineWidth * env.Config.PtPerMm)
 }
 
 func (s *Style) evalStrokeColor(opt *parser.StyleOption) {
@@ -184,3 +191,55 @@ func (s *Style) evalCloseWays(opt *parser.StyleOption) {
 }
 
 // no applyCloseWay()
+
+func (s *Style) evalDashOffset(opt *parser.StyleOption) {
+	valNode, err := getSingleValue(opt.Value)
+	var val float64
+	if err == nil {
+		if val, err = valNode.FloatVal(); err == nil {
+			s.DashOffset = val
+		} else {
+			log.Fatalf("dashOffset: expected float value, got %s",
+				valNode,
+			)
+		}
+	} else {
+		log.Fatalf("dashOffset: %s", err)
+	}
+}
+
+func getValueList(v parser.StyleExprNode) ([]parser.ValueNode, error) {
+	errMsg := ""
+	if val, ok := v.(*parser.StyleValue); ok {
+		return val.Values, nil
+	} else {
+		errMsg = fmt.Sprintf("expected value list, go id %s", v)
+	}
+	return nil, errors.New(errMsg)
+}
+
+func (s *Style) evalLineDash(opt *parser.StyleOption) {
+	valNodes, err := getValueList(opt.Value)
+	if err != nil {
+		log.Fatalf("lineDash: %s", err)
+	}
+	values := []float64{}
+	for i, n := range valNodes {
+		if v, err := n.FloatVal(); err == nil {
+			values = append(values, v)
+		} else {
+			log.Fatalf("lineDash: value %d is not float, got %s",
+				i+1, n,
+			)
+		}
+	}
+	s.LineDash = values
+}
+
+func (s *Style) applyLineDash(env *Environment) {
+	dashes := []float64{}
+	for _, v := range s.LineDash {
+		dashes = append(dashes, v*env.Config.PtPerMm)
+	}
+	env.Ctx.SetLineDash(dashes, s.DashOffset*env.Config.PtPerMm)
+}
