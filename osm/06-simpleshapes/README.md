@@ -169,3 +169,19 @@ Offene Issues:
 
 - Dateiname und Zeilennummer in AST-Knoten ergänzen
 - Prüfen der Vollständigkeit der Environment
+
+## Zusammenfassung und Tests
+
+Issues:
+
+- Crash, wenn config-Einstellungen fehlen
+- Dateinamen, Zeilennummer in AST-Knoten
+- draw: fehlender Filter: alle Elemene wählen
+- bessere Fehlermeldungen
+- log-Ausgabe steps
+- query: Fehler Duplicate keys für wiederholte Abfragen
+
+Erweiterungen:
+
+- Zusammenfügen von Linien
+- Multipolygone
