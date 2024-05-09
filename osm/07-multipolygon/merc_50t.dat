@@ -1,0 +1,4 @@
+// Basiskonfiguration 1:50·000 (1 km → 2 cm)
+config[overpassUrl] = "https://overpass-api.de/api/interpreter"
+config[projection] = "Mercator"
+config[mmPerKm] = 20

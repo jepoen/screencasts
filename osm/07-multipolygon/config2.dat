@@ -1,0 +1,32 @@
+// Testkarte
+config[overpassUrl] = "https://overpass-api.de/api/interpreter"
+config[bbox] = (13.9,50.8,14.2,51.0)
+config[outputFile] = "map0.png"
+config[projection] = "Mercator"
+config[mmPerKm] = 20
+config[ptPerMm] = 5
+
+query[ways] = `
+[bbox: {{bbox}}];
+( way; >;);
+out qt;
+`
+
+draw[wayPolygon] (
+    filter (natural=="wood" or
+         landuse=="forest")
+    style (fillColor=#00ff00)
+)
+
+draw[wayLine] (
+  filter (waterway)
+  style (lineWidth=1, strokeColor="aqua")
+)
+
+draw[wayLine] (
+    filter ("railway"=="rail")
+    style (lineWidth=2.5,
+      strokeColor=#000000,
+      closeWays=1
+    )
+)

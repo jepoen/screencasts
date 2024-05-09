@@ -1,0 +1,4 @@
+config[overpassUrl] = "https://overpass-api.de/api/interpreter"
+config[bbox] = (13.8,50.8,14.2,51.0)
+config[outputFile] = "map0.png"
+config[projection] = "Mercator"
