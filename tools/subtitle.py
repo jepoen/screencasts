@@ -62,6 +62,8 @@ def run():
   )
   parser.add_argument('-m', '--model', help='whisper model name',
     default='small')
+  parser.add_argument('-pa', '--preserve-audio', help='preserve audio file',
+    action='store_true')
   parser.add_argument('filename', help='video file name')
   args = parser.parse_args()
   #print(args.filename, args.model)
@@ -74,6 +76,9 @@ def run():
   extracted_audio = f"{input_video_name}-audio.wav"
   extract_audio(input_video, extracted_audio)
   language, segments = transcribe(extracted_audio, model)
+  if not args.preserve_audio:
+    print('Delete audio file {}'.format(extracted_audio))
+    os.remove(extracted_audio)
   print('Language: {}, model: {}'.format(language, model))
   subtitle_file = generate_subtitle_file(
     input_video_name,
