@@ -1,0 +1,4 @@
+#!/bin/bash
+
+. /opt/whisper-env/bin/activate
+python /opt/whisper-env/subtitle.py "$@"
