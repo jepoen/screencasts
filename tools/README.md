@@ -3,7 +3,7 @@
 ## subtitle
 
 - Video-Untertitel mit Whisper
-- Abgeleitet von [](https://www.digitalocean.com/community/tutorials/how-to-generate-and-add-subtitles-to-videos-using-python-openai-whisper-and-ffmpeg)
+- Abgeleitet von [xx](https://www.digitalocean.com/community/tutorials/how-to-generate-and-add-subtitles-to-videos-using-python-openai-whisper-and-ffmpeg)
 - Installation: [faster-whisper](https://github.com/SYSTRAN/faster-whisper)
   in Python-Venv
 - Hinweis zu CUDA 11 beachten
