@@ -1,3 +1,8 @@
+'''
+Adapted from https://www.digitalocean.com/community/tutorials/how-to-generate-and-add-subtitles-to-videos-using-python-openai-whisper-and-ffmpeg
+
+srt ditn't work, so changed output to vtt
+'''
 import argparse
 import math
 import os
