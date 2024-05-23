@@ -1,0 +1,46 @@
+include "merc_50t.dat"
+query[ways] = `
+[bbox: {{bbox}}];
+(
+    way;
+    >;
+);
+out qt;
+`
+
+draw[wayLine] (
+    filter (waterway and waterway != "river")
+    style (lineWidth=0.1, strokeColor="aqua", connectWays=1)
+)
+
+draw[wayLine] (
+    filter (waterway=="river")
+    style (lineWidth=0.5, strokeColor="aqua", connectWays=1)
+)
+
+draw[wayLine] (
+    filter (railway=="rail" and tunnel != "yes")
+    style (lineWidth=1, strokeColor="black", connectWays=1)
+)
+
+draw[wayLine] (
+    filter (railway=="rail" and tunnel != "yes")
+    style (lineWidth=0.5, strokeColor="white", lineDash=(2, 2),
+        dashOffset=1, connectWays=1)
+)
+
+draw[wayLine] (
+    filter (railway=="rail" and tunnel == "yes")
+    style (lineWidth=2, strokeColor="black", lineDash=(1,2),
+    connectWays=1)
+)
+
+draw[wayLine] (
+    filter (highway=="primary" or highway=="secondary"
+      or highway=="tertiary")
+    style (lineWidth=5, strokeColor=#7f0000, connectWays=1)
+)
+
+config[bbox] = (14.0, 50.9, 14.2, 51.0)
+config[outputFile] = "map_disconnect.png"
+config[ptPerMm] = 5
