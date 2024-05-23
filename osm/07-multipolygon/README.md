@@ -17,10 +17,10 @@ notwendig:
 
 Teil 1: Ablauf, Hilfsfunktionen und Tests
 
-**Screencast** [Youtube]
+**Screencast** [Youtube](https://youtu.be/4rAPhQv60ZI)
 
 Teil 2: Verbinden der Wege, Auswertung Ergebnis
 
-**Screencast** [Youtube]
+**Screencast** [Youtube](https://youtu.be/GZDkJaBnXzY)
 
 *TODO*: mehrere Styles pro Zeichenschritt (einzeln auf jedes Element anwenden)
