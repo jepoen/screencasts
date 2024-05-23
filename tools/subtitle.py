@@ -33,7 +33,11 @@ def transcribe(audio, model="small"):
               (segment.start, segment.end, segment.text))
     return language, segments
 
-def format_time(seconds):
+def format_time(seconds, st_format):
+    if st_format == 'srt':
+      sep = ','
+    else:
+      sep = '.'
     hours = math.floor(seconds / 3600)
     seconds %= 3600
     minutes = math.floor(seconds / 60)
@@ -41,23 +45,29 @@ def format_time(seconds):
     milliseconds = round((seconds - math.floor(seconds)) * 1000)
     seconds = math.floor(seconds)
     formatted_time = \
-      f"{hours:02d}:{minutes:02d}:{seconds:02d}.{milliseconds:03d}"
+      f"{hours:02d}:{minutes:02d}:{seconds:02d}{sep}{milliseconds:03d}"
     return formatted_time
 
-def generate_subtitle_file(input_video_name, language, segments):
-    subtitle_file = f"{input_video_name}-sub.{language}.vtt"
-    text = "WEBVTT\n\n"
+def generate_subtitle_file(input_video_name, language, segments, st_format):
+    if st_format not in ('vtt', 'srt'):
+        print('Unknown format: {} (use vtt or srt)', st_format)
+        return
+    subtitle_file = f"{input_video_name}-sub.{language}.{st_format}"
+    if st_format == 'vtt':
+        text = "WEBVTT\n\n"
+    else:
+        text = ""
     for index, segment in enumerate(segments):
-        segment_start = format_time(segment.start)
-        segment_end = format_time(segment.end)
-        #text += f"{str(index+1)}\n"
+        segment_start = format_time(segment.start, st_format)
+        segment_end = format_time(segment.end, st_format)
+        if st_format == 'srt':
+            text += f"{str(index+1)}\n"
         text += f"{segment_start} --> {segment_end}\n"
         text += f"{segment.text}\n"
         text += "\n"
     f = open(subtitle_file, "w")
     f.write(text)
     f.close()
-
     return subtitle_file
 
 def run():
@@ -69,6 +79,8 @@ def run():
     default='small')
   parser.add_argument('-pa', '--preserve-audio', help='preserve audio file',
     action='store_true')
+  parser.add_argument('-f', '--format', help='Output format (vtt or srt)',
+    default='vtt')
   parser.add_argument('filename', help='video file name')
   args = parser.parse_args()
   #print(args.filename, args.model)
@@ -78,6 +90,7 @@ def run():
   #model = 'medium'
   #model = 'distil-large-v3'
   model = args.model
+  st_format = args.format
   extracted_audio = f"{input_video_name}-audio.wav"
   extract_audio(input_video, extracted_audio)
   language, segments = transcribe(extracted_audio, model)
@@ -88,7 +101,8 @@ def run():
   subtitle_file = generate_subtitle_file(
     input_video_name,
     language=language,
-    segments=segments
+    segments=segments,
+    st_format=st_format,
   )
   print('Result: {}'.format(subtitle_file))
 
