@@ -24,9 +24,10 @@ type Style struct {
 	// added after video
 	FillColor color.RGBA
 	//
-	LineDash   []float64
-	DashOffset float64
-	CloseWays  bool
+	LineDash    []float64
+	DashOffset  float64
+	CloseWays   bool
+	ConnectWays bool
 }
 
 func NewStyle(parent *Style) *Style {
@@ -45,6 +46,7 @@ func NewStyle(parent *Style) *Style {
 	style.registerStyle("lineDash", style.evalLineDash, style.applyLineDash)
 	style.registerStyle("dashOffset", style.evalDashOffset, nil)
 	style.registerStyle("closeWays", style.evalCloseWays, nil)
+	style.registerStyle("connectWays", style.evalConnectWays, nil)
 	return style
 }
 
@@ -191,6 +193,22 @@ func (s *Style) evalCloseWays(opt *parser.StyleOption) {
 }
 
 // no applyCloseWay()
+
+func (s *Style) evalConnectWays(opt *parser.StyleOption) {
+	valNode, err := getSingleValue(opt.Value)
+	var val bool
+	if err == nil {
+		if val, err = valNode.BoolVal(); err == nil {
+			s.ConnectWays = val
+		} else {
+			log.Fatalf("connectWays: expected bool value, got %s",
+				valNode,
+			)
+		}
+	} else {
+		log.Fatalf("connectWays: %s", err)
+	}
+}
 
 func (s *Style) evalDashOffset(opt *parser.StyleOption) {
 	valNode, err := getSingleValue(opt.Value)

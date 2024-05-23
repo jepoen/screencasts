@@ -34,7 +34,13 @@ func drawWayLine(step *parser.DrawStep, style *config.Style, env *config.Environ
 	for _, wId := range wayIds {
 		ways = append(ways, env.Data.Ways[wId])
 	}
-	// TODO: maybe connect ways?
+	if style.ConnectWays {
+		// TODO: maybe connect ways?
+		len0 := len(ways)
+		ways = ConnectWays(ways)
+		len1 := len(ways)
+		log.Printf("connectWays old: %d new %d", len0, len1)
+	}
 	for _, wayPointIds := range ways {
 		render.DrawPolyline(env, wayPointIds, style.CloseWays)
 	}
