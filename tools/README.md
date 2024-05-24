@@ -9,7 +9,7 @@
 - Hinweis zu CUDA 11 beachten
 - Python-Venv benötigt noch `ffmpeg-python`
 
-Für libcuda/libcublas 11:
+Für libcudnn11/libcublas11:
 ~~~
 # Virtuelle Umgebung erstellen
 python -m venv {whisper-venv}
