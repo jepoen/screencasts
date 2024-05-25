@@ -46,3 +46,15 @@ options:
   -f FORMAT, --format FORMAT
                         Output format (vtt or srt)
 ~~~
+
+# Einbinden der Untertitelspur
+
+In HTML5 kann ein Video mit eigener Untertiteldatei wie folgt
+eingebettet werden:
+
+~~~
+<video width="1280" controls="controls">
+  <source src="video.mp4">
+  <track kind="subtitles" label="Deutsch" src="subtitle.vtt">
+</video>
+~~~
