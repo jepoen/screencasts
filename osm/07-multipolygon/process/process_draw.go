@@ -11,8 +11,9 @@ import (
 type DrawFunction func(step *parser.DrawStep, style *config.Style, env *config.Environment)
 
 var drawFunctions = map[string]DrawFunction{
-	"wayLine":    drawWayLine,
-	"wayPolygon": drawWayPolygon,
+	"wayLine":         drawWayLine,
+	"wayPolygon":      drawWayPolygon,
+	"relMultipolygon": drawRelMultipolygon,
 }
 
 func evalDraw(step *parser.DrawStep, env *config.Environment) {
@@ -53,5 +54,36 @@ func drawWayPolygon(step *parser.DrawStep, style *config.Style, env *config.Envi
 	wayIds := processFilter(step.Filter, env.Data.WayTags)
 	for _, wId := range wayIds {
 		render.DrawPolygon(env, wId, env.Data.Ways[wId])
+	}
+}
+
+func drawRelMultipolygon(step *parser.DrawStep, style *config.Style, env *config.Environment) {
+	style.SetContext(env)
+	relIds := processFilter(step.Filter, env.Data.RelTags)
+	for _, rId := range relIds {
+		outer := []data.IdList{}
+		inner := []data.IdList{}
+		for _, m := range env.Data.Relations[rId] {
+			if m.Type != data.MEMBER_WAY {
+				continue
+			}
+			nodeIds := env.Data.Ways[m.Ref]
+			switch m.Role {
+			case "outer":
+				outer = append(outer, nodeIds)
+			case "inner":
+				inner = append(inner, nodeIds)
+			default:
+				log.Fatalf("unknown role %s of multipolygon %d, way %d",
+					m.Role, rId, m.Ref,
+				)
+			}
+		}
+		outer = ConnectWays(outer)
+		if len(outer) == 0 {
+			log.Fatalf("multipolygon %d has no outer border", rId)
+		}
+		inner = ConnectWays(inner)
+		render.DrawMultipolygon(env, rId, outer, inner)
 	}
 }

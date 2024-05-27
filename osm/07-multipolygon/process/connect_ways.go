@@ -43,7 +43,7 @@ func joinWays(ways []data.IdList, conn []int) data.IdList {
 	if len(conn) == 1 {
 		return ways[conn[0]]
 	}
-	res := ways[conn[0]]
+	res := slices.Clone(ways[conn[0]])
 	for _, idx := range conn[1:] {
 		res = appendWay(res, ways[idx])
 	}

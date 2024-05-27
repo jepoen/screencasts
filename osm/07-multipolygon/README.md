@@ -24,3 +24,25 @@ Teil 2: Verbinden der Wege, Auswertung Ergebnis
 **Screencast** [Youtube](https://youtu.be/GZDkJaBnXzY)
 
 *TODO*: mehrere Styles pro Zeichenschritt (einzeln auf jedes Element anwenden)
+
+## Multipolygon
+
+![OSM-Multipolygon](multipoly.png)
+
+Dokumentation: [OSM-Wiki](https://wiki.openstreetmap.org/wiki/Relation:multipolygon)
+
+Abfrage:
+
+~~~
+(
+    rel[type='multipolygon'];
+    way;
+);
+(
+    ._;
+    >;
+);
+out qt;
+~~~
+
+**Screencast**: [Youtube]

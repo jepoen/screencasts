@@ -177,7 +177,7 @@ func eqLi(li0, li1 data.IdList, directed bool) bool {
 	if directed {
 		return false
 	}
-	// TODO fix for cyclic lists
+	// fix for cyclic lists (after screencast)
 	if li0.IsClosed() { // omit 1st point
 		ll0 = ll0[1:]
 		ll1 = ll1[1:]
