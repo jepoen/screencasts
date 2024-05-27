@@ -14,11 +14,13 @@ Für libcudnn11/libcublas11:
 # Virtuelle Umgebung erstellen
 python -m venv {whisper-venv}
 # und aktivieren
-. {whisper-venv}/bin/activate
+source {whisper-venv}/bin/activate
 # notwendige Pakete installieren (getestet unter Linux-Mint)
 pip install -r requirements.txt
 # ctranslate für libcudnn11 überschreiben
 pip install --force-reinstall ctranslate2==3.24.0
+# Virtuelle Umgebung kann nun deaktiviert werden
+deactivate
 ~~~
 
 - Python-Script `subtitle.py` in die Venv kopieren
