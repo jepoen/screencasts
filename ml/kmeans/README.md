@@ -2,5 +2,7 @@
 
 ## KMeans-Clustering (Old Faithful)
 
-**Screencast** [Youtube]()
+Datensatz: [faithful.csv](../datasets/faithful.csv)
+
+**Screencast** [Youtube](https://youtu.be/Qxdw6U7dMY0)
 
