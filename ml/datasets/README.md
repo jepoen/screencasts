@@ -5,3 +5,4 @@
 - Hackathon Leipzig 2023: [opendata.leipzig.de](https://opendata.leipzig.de/pages/hackathon)
 - Wetterdaten: [Deutscher Wetterdienst](https://www.dwd.de/DE/leistungen/zeitreihen/zeitreihen.html)
 - Old Faithful Geyser: [R](https://cran.r-project.org) (Beispiel-Datensatz)
+- `ostroh.jpg`: eigenes Foto, CC-BY-SA-NC
