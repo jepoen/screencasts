@@ -10,4 +10,4 @@ Datensatz: [faithful.csv](../datasets/faithful.csv)
 
 Bild: [ostroh1.jpg](../datasets/ostroh1.jpg)
 
-** Screencast** [Youtube](https://youtu.be/zOT5xiy5BaQ)
+**Screencast** [Youtube](https://youtu.be/zOT5xiy5BaQ)
