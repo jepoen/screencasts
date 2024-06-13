@@ -5,4 +5,5 @@
 - [NumPy](03-numpy)
 - [Workflow](04-workflow)
 - [Plots](06-plt)
+- [SVM](10-svm)
 - [KMeans Clustering](kmeans)
