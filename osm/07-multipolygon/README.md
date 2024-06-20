@@ -62,6 +62,6 @@ StyleEntry = "style" "[" Id "]" "=" StyleTuple
 ...
 ~~~
 
-**Screencast**: [Youtube]
+**Screencast**: [Youtube](https://youtu.be/6CGrcZ3RR-A)
 
 
