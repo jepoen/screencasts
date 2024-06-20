@@ -52,6 +52,9 @@ func (p *Parser) ParseAll() *Ast {
 		case token.CONFIG:
 			configNode := p.parseConfig()
 			ast.ConfigList = append(ast.ConfigList, configNode)
+		case token.STYLE:
+			styleNode := p.parseStyleSettings()
+			ast.ConfigList = append(ast.ConfigList, styleNode)
 		case token.INC:
 			subAst := p.parseInclude()
 			ast.addSubAst(subAst)
@@ -167,4 +170,15 @@ func (p *Parser) parseQuery() StepNode {
 		Key:   key,
 		Query: value,
 	}
+}
+
+func (p *Parser) parseStyleSettings() SettingsNode {
+	p.match(token.STYLE)
+	p.match(token.LBRACKET)
+	tok := p.match(token.ID)
+	key := tok.Value
+	p.match(token.RBRACKET)
+	p.match(token.ASSIGN)
+	options := p.parseStyleList()
+	return &StyleEntry{Key: key, Options: options}
 }

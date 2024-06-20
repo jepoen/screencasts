@@ -78,6 +78,19 @@ func (n *ConfigEntry) String() string {
 	return fmt.Sprintf("(config %s (%s))", n.Key, strings.Join(sValues, ", "))
 }
 
+// Style
+type StyleEntry struct {
+	Key     string
+	Options []*StyleOption
+}
+
+func (n *StyleEntry) astNode()      {}
+func (n *StyleEntry) settingsNode() {}
+
+func (n *StyleEntry) String() string {
+	return fmt.Sprintf("(style %s %v)", n.Key, n.Options)
+}
+
 type NumType int
 
 const (

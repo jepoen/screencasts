@@ -56,8 +56,25 @@ func (env *Environment) EvalSettings(ast *parser.Ast) {
 			} else {
 				log.Printf("config: unknown option %s", ty.Key)
 			}
+		case *parser.StyleEntry:
+			if _, ok := env.Styles[ty.Key]; ok {
+				log.Fatalf("style %s has multiple definitions", ty.Key)
+			}
+			env.Styles[ty.Key] = env.evalStyle(ty)
 		default:
 			log.Printf("unknown setting %s", entry)
 		}
 	}
+}
+
+func (env *Environment) evalStyle(n *parser.StyleEntry) *Style {
+	style := NewStyle(env.Styles["_"])
+	for _, opt := range n.Options {
+		if fu, ok := style.functions[opt.Key]; ok {
+			fu.eval(opt)
+		} else {
+			log.Printf("Style option %s not implemented", opt)
+		}
+	}
+	return style
 }

@@ -98,3 +98,21 @@ query[q]
 		)
 	}
 }
+
+func TestStyleSetting(t *testing.T) {
+	inp := `
+style[base] = (a=3, b=(1, 2, 3))
+	`
+	expected := "[(style base [(option a 3) (option b (1, 2, 3))])] []\n"
+
+	lx := lexer.NewLexer("-", inp)
+	p := NewParser(lx)
+	ast := p.ParseAll()
+	//log.Println(ast)
+	//log.Println(expected)
+	if ast.String() != expected {
+		t.Errorf("\nexpected %s\ngot      %s",
+			expected, ast.String(),
+		)
+	}
+}

@@ -147,6 +147,10 @@ func (p *Parser) parseStyle() *DrawStyle {
 func (p *Parser) parseStyleList() []*StyleOption {
 	p.match(token.LPAREN)
 	res := []*StyleOption{}
+	if p.curToken.Type == token.RPAREN {
+		p.match(token.RPAREN)
+		return res
+	}
 	for {
 		id := ""
 		switch p.curToken.Type {
