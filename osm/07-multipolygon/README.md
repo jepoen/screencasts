@@ -46,3 +46,22 @@ out qt;
 ~~~
 
 **Screencast**: [Youtube](https://youtu.be/ovUoZHsxcr4)
+
+## Style-Vererbung
+
+Erweiterung der Grammatik
+
+~~~
+...
+Entry = ConfigEntry
+      | StyleEntry
+      | DrawStep
+      | Include
+
+StyleEntry = "style" "[" Id "]" "=" StyleTuple
+...
+~~~
+
+**Screencast**: [Youtube]
+
+
