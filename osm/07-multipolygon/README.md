@@ -69,4 +69,4 @@ StyleEntry = "style" "[" Id "]" "=" StyleTuple
 - Bug in Graphikbibliothek, wird in PNG nicht unterstützt
 - Ziel: Test in anderen Ausgabeformaten
 
-**Screencast**: [Youtube]
+**Screencast**: [Youtube](https://youtu.be/vMVpAuu7htw)
