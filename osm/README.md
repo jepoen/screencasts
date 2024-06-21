@@ -11,3 +11,4 @@ zur Entwicklung eines Karten-Renders in der Programmierspache
 5. [Parser der Konfiguration](https://github.com/jepoen/screencasts/tree/master/osm/05-parser)
 6. [Zeichnen einfacher Formen](https://github.com/jepoen/screencasts/tree/master/osm/06-simpleshapes)
 7. [Verbinden von Linien, Multipolygon](07-multipolygon)
+8. [Andere Ausgabeformate](08-output)
