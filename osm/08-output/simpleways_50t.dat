@@ -1,0 +1,104 @@
+// Einfache Wege und Flächen, 1 : 50·000
+
+query[ways] = `
+[bbox: {{bbox}}];
+(
+    rel[type='multipolygon'];
+    way;
+);
+(
+    ._;
+    >;
+);
+out qt;
+`
+
+draw[relMultipolygon] (
+    filter (natural=="wood" or landuse=="forest")
+    style (fillColor="palegreen")
+)
+
+draw[relMultipolygon] (
+    filter (natural=="water")
+    style (fillColor="aqua")
+)
+
+draw[wayPolygon] (
+    filter (natural=="wood" or landuse=="forest")
+    style (fillColor="palegreen")
+)
+
+draw[wayPolygon] (
+    filter (natural=="water")
+    style (fillColor="aqua")
+)
+
+draw[wayLine] (
+    filter (waterway and waterway != "river")
+    style (lineWidth=0.1, strokeColor="aqua")
+)
+
+draw[wayLine] (
+    filter (waterway=="river")
+    style (lineWidth=0.5, strokeColor="aqua", connectWays=1)
+)
+
+draw[wayLine] (
+    filter (railway=="rail" and tunnel != "yes")
+    style (lineWidth=2, strokeColor="black", connectWays=1)
+)
+
+draw[wayLine] (
+    filter (railway=="rail" and tunnel != "yes")
+    style (lineWidth=1.2, strokeColor="white", lineDash=(2, 2),
+        dashOffset=1, connectWays=1)
+)
+
+draw[wayLine] (
+    filter (railway=="rail" and tunnel == "yes")
+    style (lineWidth=2, strokeColor="black", lineDash=(1,2),
+        connectWays=1)
+)
+
+draw[wayLine] (
+    filter (highway=="primary" or highway=="secondary"
+      or highway=="tertiary")
+    style (lineWidth=3, strokeColor=#000000, connectWays=1)
+)
+
+draw[wayLine] (
+    filter (highway=="tertiary")
+    style (lineWidth=2, strokeColor=#ffffff, connectWays=1)
+)
+
+draw[wayLine] (
+    filter (highway=="secondary")
+    style (lineWidth=2, strokeColor="gold", connectWays=1)
+)
+
+draw[wayLine] (
+    filter (highway=="primary")
+    style (lineWidth=2, strokeColor="darkorange", connectWays=1)
+)
+
+draw[wayLine] (
+    filter (railway=="rail" and bridge == "yes")
+    style (lineWidth=3.5, strokeColor="black", connectWays=1)
+)
+
+draw[wayLine] (
+    filter ((highway=="primary" or highway=="secondary"
+      or highway=="tertiary") and bridge=="yes")
+    style (lineWidth=3.2, strokeColor=#000000, connectWays=1)
+)
+
+draw[wayLine] (
+    filter (highway=="primary" and bridge=="yes")
+    style (lineWidth=2, strokeColor="darkorange")
+)
+
+draw[wayLine] (
+    filter (highway=="secondary" and bridge=="yes")
+    style (lineWidth=2, strokeColor="gold")
+)
+

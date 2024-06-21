@@ -1,0 +1,13 @@
+query[ways_test] = `
+[bbox: {{bbox}}];
+(
+    way;
+    >;
+);
+out qt;
+`
+
+draw[wayLine] (
+    filter (toBe or not toBe)
+    style (lineWidth=0.2, strokeColor="black")
+)
