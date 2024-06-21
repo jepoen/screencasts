@@ -14,4 +14,4 @@ Bild: [ostroh1.jpg](../datasets/ostroh1.jpg)
 
 ## DBSCAN Clustering unregelmäßig geformter Regionen
 
-**Screencast** [Youtube]
+**Screencast** [Youtube](https://youtu.be/zS4DSPl2rQ4)
