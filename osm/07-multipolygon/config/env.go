@@ -73,7 +73,7 @@ func (env *Environment) evalStyle(n *parser.StyleEntry) *Style {
 		if fu, ok := style.functions[opt.Key]; ok {
 			fu.eval(opt)
 		} else {
-			log.Printf("Style option %s not implemented", opt)
+			log.Printf("Style option %s not implemented\n", opt)
 		}
 	}
 	return style

@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"image/color"
 	"log"
+
+	"github.com/llgcode/draw2d"
 )
 
 type applyFunc func(env *Environment)
@@ -21,11 +23,11 @@ type Style struct {
 	functions   map[string]styleFunc
 	LineWidth   float64
 	StrokeColor color.RGBA
-	// added after video
-	FillColor color.RGBA
-	//
+	FillColor   color.RGBA
 	LineDash    []float64
 	DashOffset  float64
+	LineCap     LineCapType
+	LineJoin    LineJoinType
 	CloseWays   bool
 	ConnectWays bool
 }
@@ -45,6 +47,8 @@ func NewStyle(parent *Style) *Style {
 	style.registerStyle("fillColor", style.evalFillColor, style.applyFillColor)
 	style.registerStyle("lineDash", style.evalLineDash, style.applyLineDash)
 	style.registerStyle("dashOffset", style.evalDashOffset, nil)
+	style.registerStyle("lineCap", style.evalLineCap, style.applyLineCap)
+	style.registerStyle("lineJoin", style.evalLineJoin, style.applyLineJoin)
 	style.registerStyle("closeWays", style.evalCloseWays, nil)
 	style.registerStyle("connectWays", style.evalConnectWays, nil)
 	return style
@@ -260,4 +264,54 @@ func (s *Style) applyLineDash(env *Environment) {
 		dashes = append(dashes, v*env.Config.PtPerMm)
 	}
 	env.Ctx.SetLineDash(dashes, s.DashOffset*env.Config.PtPerMm)
+}
+
+func (s *Style) evalLineCap(opt *parser.StyleOption) {
+	valNode, err := getSingleValue(opt.Value)
+	if err == nil {
+		capStr := valNode.StrVal()
+		cap, ok := String2Cap[capStr]
+		if !ok {
+			log.Fatalf("LineCap type %s unknown", capStr)
+		}
+		s.LineCap = cap
+	}
+}
+
+func (s *Style) applyLineCap(env *Environment) {
+	caps := map[LineCapType]draw2d.LineCap{
+		CAP_ROUND:  draw2d.RoundCap,
+		CAP_BUTT:   draw2d.ButtCap,
+		CAP_SQUARE: draw2d.SquareCap,
+	}
+	if c, ok := caps[s.LineCap]; ok {
+		env.Ctx.SetLineCap(c)
+	} else {
+		log.Fatalf("applyLineCap: cap type %s not available", s.LineCap)
+	}
+}
+
+func (s *Style) evalLineJoin(opt *parser.StyleOption) {
+	valNode, err := getSingleValue(opt.Value)
+	if err == nil {
+		joinStr := valNode.StrVal()
+		join, ok := String2Join[joinStr]
+		if !ok {
+			log.Fatalf("LineJoin type %s unknown", joinStr)
+		}
+		s.LineJoin = join
+	}
+}
+
+func (s *Style) applyLineJoin(env *Environment) {
+	joins := map[LineJoinType]draw2d.LineJoin{
+		JOIN_ROUND: draw2d.RoundJoin,
+		JOIN_MITER: draw2d.MiterJoin,
+		JOIN_BEVEL: draw2d.BevelJoin,
+	}
+	if j, ok := joins[s.LineJoin]; ok {
+		env.Ctx.SetLineJoin(j)
+	} else {
+		log.Fatalf("applyLineCap: cap type %s not available", s.LineCap)
+	}
 }

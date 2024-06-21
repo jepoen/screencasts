@@ -64,4 +64,9 @@ StyleEntry = "style" "[" Id "]" "=" StyleTuple
 
 **Screencast**: [Youtube](https://youtu.be/6CGrcZ3RR-A)
 
+## LineCap und LineJoin
 
+- Bug in Graphikbibliothek, wird in PNG nicht unterstützt
+- Ziel: Test in anderen Ausgabeformaten
+
+**Screencast**: [Youtube]
