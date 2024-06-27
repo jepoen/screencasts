@@ -1,0 +1,8 @@
+// Testkarte Zusammenfassung
+
+include "merc_50t.dat"
+include /*"testways_50t.dat"*/ "simpleways_50t.dat"
+
+config[bbox] = (14.0, 50.9, 14.2, 51.0)
+config[outputFile] = "map3.svg"
+config[ptPerMm] = 5
