@@ -12,3 +12,20 @@ notwendig:
   ~~~
 - Anpassen aller Importe in den Quelldateien von `07-multipolygon`
   auf `08-output`
+
+## Refactoring Polyline
+
+Aufspalten der Ausgabe einer Linie oder eines Polygons in:
+
+- Knoten-IDs in Koordinatenliste
+- Koordinaten in Canvas-Koordinaten
+- Canvas-Koordinaten in GraphicContext-Pfad
+
+**Screencast**: [Youtube](https://youtu.be/22GpLnlW9lo)
+
+## Andere Ausgabeformate
+
+`Canvas` ist nun Interface, das die Daten für das jeweilige Ausgabeformat
+speichert.
+
+**Screencast**: [Youtube](https://youtu.be/Uc_rFCia19s)
