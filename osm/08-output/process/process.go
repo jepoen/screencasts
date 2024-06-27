@@ -6,8 +6,6 @@ import (
 	"08-output/parser"
 	"log"
 	"strings"
-
-	"github.com/llgcode/draw2d/draw2dimg"
 )
 
 func ProcessAst(env *config.Environment, ast *parser.Ast) {
@@ -21,10 +19,6 @@ func ProcessAst(env *config.Environment, ast *parser.Ast) {
 			log.Printf("unknown step: %s", ty)
 		}
 	}
-}
-
-func Save(env *config.Environment) {
-	draw2dimg.SaveToPngFile(env.Config.OutputFile, env.Canvas)
 }
 
 func evalQuery(qs *parser.QueryStep, env *config.Environment) {

@@ -71,3 +71,11 @@ func (tr *Transformer) ImgRect() image.Rectangle {
 	he := int(tr.p1.Y - tr.p0.Y)
 	return image.Rectangle{image.Point{0, 0}, image.Point{wi, he}}
 }
+
+func (tr *Transformer) ImgWidth() float64 {
+	return tr.p1.X - tr.p0.X
+}
+
+func (tr *Transformer) ImgHeight() float64 {
+	return tr.p1.Y - tr.p0.Y
+}

@@ -22,7 +22,7 @@ func main() {
 	process.ProcessAst(env, ast)
 	// Darstellung TODO
 	//draw(env)
-	process.Save(env)
+	env.SaveMap()
 }
 
 /*

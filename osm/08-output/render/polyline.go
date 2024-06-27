@@ -3,12 +3,40 @@ package render
 import (
 	"08-output/config"
 	"08-output/data"
+	"08-output/geo"
 	"fmt"
 	"log"
+
+	"github.com/llgcode/draw2d"
 )
 
+func PointsToPath(
+	ctx draw2d.GraphicContext,
+	points geo.PointList,
+	isClosed bool,
+) {
+	ctx.MoveTo(points[0].X, points[0].Y)
+	for _, p := range points[1:] {
+		ctx.LineTo(p.X, p.Y)
+	}
+	if isClosed {
+		ctx.Close()
+	}
+}
+
+func CoordsToPoints(
+	tr *geo.Transformer,
+	coords geo.CoordList,
+) geo.PointList {
+	points := geo.PointList{}
+	for _, c := range coords {
+		p := tr.Transform(c)
+		points = append(points, p)
+	}
+	return points
+}
+
 func DrawPolyline(env *config.Environment, nodeIds data.IdList, closeWay bool) {
-	start := true
 	isClosed := nodeIds.IsClosed()
 	idx0 := 0
 	if isClosed && closeWay {
@@ -16,21 +44,15 @@ func DrawPolyline(env *config.Environment, nodeIds data.IdList, closeWay bool) {
 		idx0 = 1
 	}
 	if idx0 >= len(nodeIds)-1 {
+		// TODO Fehlermeldung?
 		return
 	}
-	for _, nId := range nodeIds[idx0:] {
-		p := env.Tr.Transform(env.Data.Nodes[nId])
-		if start {
-			env.Ctx.MoveTo(p.X, p.Y)
-			start = false
-		} else {
-			env.Ctx.LineTo(p.X, p.Y)
-		}
+	if coords, ok := env.Data.WayCoords(nodeIds[idx0:]); ok {
+		points := CoordsToPoints(env.Tr, coords)
+		PointsToPath(env.Ctx, points, isClosed)
+		env.Ctx.Stroke()
 	}
-	if isClosed && closeWay {
-		env.Ctx.Close()
-	}
-	env.Ctx.Stroke()
+	// TODO Fehlermeldung bei fehlerhafter coordList?
 }
 
 func drawPolygonPath(env *config.Environment, nodeIds data.IdList, errPrefix string) bool {
@@ -45,18 +67,13 @@ func drawPolygonPath(env *config.Environment, nodeIds data.IdList, errPrefix str
 		)
 		return false
 	}
-	start := true
-	for _, nId := range nodeIds[1:] {
-		p := env.Tr.Transform(env.Data.Nodes[nId])
-		if start {
-			env.Ctx.MoveTo(p.X, p.Y)
-			start = false
-		} else {
-			env.Ctx.LineTo(p.X, p.Y)
-		}
+	if coords, ok := env.Data.WayCoords(nodeIds); ok {
+		points := CoordsToPoints(env.Tr, coords)
+		PointsToPath(env.Ctx, points, true)
+		return true
 	}
-	env.Ctx.Close()
-	return true
+	// TODO Fehlermeldung unvollständige coordList
+	return false
 }
 
 func DrawPolygon(env *config.Environment, wId int64, nodeIds data.IdList) {

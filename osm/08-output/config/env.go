@@ -5,17 +5,16 @@ import (
 	"08-output/geo"
 	"08-output/parser"
 	"fmt"
-	"image"
 	"log"
 
-	"github.com/llgcode/draw2d/draw2dimg"
+	"github.com/llgcode/draw2d"
 )
 
 type Environment struct {
 	Config *Config
 	Tr     *geo.Transformer
-	Canvas *image.RGBA
-	Ctx    *draw2dimg.GraphicContext
+	Canvas Canvas
+	Ctx    draw2d.GraphicContext
 	Styles map[string]*Style
 	Query  map[string]string
 	Data   *data.OsmData
@@ -35,8 +34,8 @@ func NewEnvironment(ast *parser.Ast) *Environment {
 		geo.ORIENT_NEGATIVE,
 	)
 	log.Println(env.Tr.ImgRect())
-	env.Canvas = image.NewRGBA(env.Tr.ImgRect())
-	env.Ctx = draw2dimg.NewGraphicContext(env.Canvas)
+	env.Canvas = GetCanvas(env.Config.OutputFile, env.Tr.ImgWidth(), env.Tr.ImgHeight())
+	env.Ctx = env.Canvas.Ctx()
 	env.Styles["_"] = CreateBaseStyle()
 	return env
 }
@@ -77,4 +76,8 @@ func (env *Environment) evalStyle(n *parser.StyleEntry) *Style {
 		}
 	}
 	return style
+}
+
+func (env *Environment) SaveMap() {
+	env.Canvas.Save()
 }

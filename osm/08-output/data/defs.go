@@ -61,3 +61,15 @@ func NewOsmData() *OsmData {
 		RelTags:   map[int64]TagMap{},
 	}
 }
+
+func (data *OsmData) WayCoords(idList IdList) (geo.CoordList, bool) {
+	coords := geo.CoordList{}
+	for _, nId := range idList {
+		if co, ok := data.Nodes[nId]; ok {
+			coords = append(coords, co)
+		} else {
+			return coords, false
+		}
+	}
+	return coords, true
+}
