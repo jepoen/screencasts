@@ -8,7 +8,7 @@ import (
 	"log"
 )
 
-type DrawFunction func(step *parser.DrawStep, style *config.Style, env *config.Environment)
+type DrawFunction func(step *parser.DrawStep, style []*config.Style, env *config.Environment)
 
 var drawFunctions = map[string]DrawFunction{
 	"wayLine":         drawWayLine,
@@ -25,17 +25,16 @@ func evalDraw(step *parser.DrawStep, env *config.Environment) {
 	}
 }
 
-func drawWayLine(step *parser.DrawStep, style *config.Style, env *config.Environment) {
+func drawWayLine(step *parser.DrawStep, style []*config.Style, env *config.Environment) {
 	// TODO: set style
 	//env.Ctx.SetStrokeColor(color.Black)
 	//env.Ctx.SetLineWidth(0.5 * env.Config.PtPerMm)
-	style.SetContext(env)
 	wayIds := processFilter(step.Filter, env.Data.WayTags)
 	ways := []data.IdList{}
 	for _, wId := range wayIds {
 		ways = append(ways, env.Data.Ways[wId])
 	}
-	if style.ConnectWays {
+	if len(style) > 0 && style[0].ConnectWays {
 		// TODO: maybe connect ways?
 		len0 := len(ways)
 		ways = ConnectWays(ways)
@@ -43,22 +42,26 @@ func drawWayLine(step *parser.DrawStep, style *config.Style, env *config.Environ
 		log.Printf("connectWays old: %d new %d", len0, len1)
 	}
 	for _, wayPointIds := range ways {
-		render.DrawPolyline(env, wayPointIds, style.CloseWays)
+		for _, s := range style {
+			s.SetContext(env)
+			render.DrawPolyline(env, wayPointIds, s.CloseWays)
+		}
 	}
 }
 
-func drawWayPolygon(step *parser.DrawStep, style *config.Style, env *config.Environment) {
+func drawWayPolygon(step *parser.DrawStep, style []*config.Style, env *config.Environment) {
 	// TODO: set style
 	//env.Ctx.SetFillColor(colornames.Lawngreen)
-	style.SetContext(env)
 	wayIds := processFilter(step.Filter, env.Data.WayTags)
 	for _, wId := range wayIds {
-		render.DrawPolygon(env, wId, env.Data.Ways[wId])
+		for _, s := range style {
+			s.SetContext(env)
+			render.DrawPolygon(env, wId, env.Data.Ways[wId])
+		}
 	}
 }
 
-func drawRelMultipolygon(step *parser.DrawStep, style *config.Style, env *config.Environment) {
-	style.SetContext(env)
+func drawRelMultipolygon(step *parser.DrawStep, style []*config.Style, env *config.Environment) {
 	relIds := processFilter(step.Filter, env.Data.RelTags)
 	for _, rId := range relIds {
 		outer := []data.IdList{}
@@ -84,6 +87,9 @@ func drawRelMultipolygon(step *parser.DrawStep, style *config.Style, env *config
 			log.Fatalf("multipolygon %d has no outer border", rId)
 		}
 		inner = ConnectWays(inner)
-		render.DrawMultipolygon(env, rId, outer, inner)
+		for _, s := range style {
+			s.SetContext(env)
+			render.DrawMultipolygon(env, rId, outer, inner)
+		}
 	}
 }

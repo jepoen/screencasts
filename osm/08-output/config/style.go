@@ -33,13 +33,12 @@ type Style struct {
 }
 
 func NewStyle(parent *Style) *Style {
-	style := &Style{
-		functions: map[string]styleFunc{},
-		LineDash:  []float64{},
-	}
+	style := &Style{}
 	if parent != nil {
 		*style = *parent
 	}
+	style.functions = map[string]styleFunc{}
+	style.LineDash = []float64{}
 	// new Attribute: register
 	style.registerStyle("lineWidth", style.evalLineWidth, style.applyLineWidth)
 	style.registerStyle("strokeColor", style.evalStrokeColor, style.applyStrokeColor)
@@ -75,24 +74,27 @@ func CreateBaseStyle() *Style {
 	return style
 }
 
-func EvalStyle(node *parser.DrawStyle, env *Environment) *Style {
+func EvalStyle(nodes []*parser.DrawStyle, env *Environment) []*Style {
 	sParent := "_"
-	if node != nil {
-		sParent = node.BaseStyle
-	}
-	parent := env.Styles[sParent]
-	style := NewStyle(parent)
-	if node == nil {
-		return style
-	}
-	for _, opt := range node.Options {
-		if fu, ok := style.functions[opt.Key]; ok {
-			fu.eval(opt)
-		} else {
-			log.Printf("Style option %s not implemented", opt)
+	res := []*Style{}
+	for _, node := range nodes {
+		if node != nil {
+			sParent = node.BaseStyle
 		}
+		parent := env.Styles[sParent]
+		style := NewStyle(parent)
+		if node != nil {
+			for _, opt := range node.Options {
+				if fu, ok := style.functions[opt.Key]; ok {
+					fu.eval(opt)
+				} else {
+					log.Printf("Style option %s not implemented", opt)
+				}
+			}
+		}
+		res = append(res, style)
 	}
-	return style
+	return res
 }
 
 func (s *Style) SetContext(env *Environment) {

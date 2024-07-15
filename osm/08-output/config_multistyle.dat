@@ -1,7 +1,7 @@
 // Testkarte
 config[overpassUrl] = "https://overpass-api.de/api/interpreter"
 config[bbox] = (13.9,50.8,14.2,51.0)
-config[outputFile] = "map_cap.pdf"
+config[outputFile] = "map_multistyle.pdf"
 config[projection] = "Mercator"
 config[mmPerKm] = 50
 config[ptPerMm] = 4
@@ -43,10 +43,6 @@ draw[wayLine] (
       strokeColor=#000000,
       closeWays=1
     )
-)
-
-draw[wayLine] (
-    filter ("railway"=="rail")
     style[ways] (lineWidth=3,
       strokeColor=#ffffff,
       lineDash=(10,10), dashOffset=5,

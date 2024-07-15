@@ -46,7 +46,7 @@ func (op CmpOperator) String() string {
 
 type DrawStep struct {
 	DrawOp string
-	Style  *DrawStyle
+	Style  []*DrawStyle
 	Filter TagFilterNode
 }
 

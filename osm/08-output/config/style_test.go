@@ -47,7 +47,7 @@ config[ptPerMm] = 5
 		drawStep0 := ast.StepList[0].(*parser.DrawStep)
 		style := EvalStyle(drawStep0.Style, env)
 		//log.Println(style)
-		if !eqStyle(c.expected, style) {
+		if !eqStyle(c.expected, style[0]) {
 			t.Errorf("expected %s, got %s", c.expected, style)
 		}
 		if !eqStyle(env.Styles["_"], style0) {

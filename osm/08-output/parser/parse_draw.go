@@ -11,12 +11,12 @@ func (p *Parser) parseDraw() *DrawStep {
 	tok := p.match(token.ID)
 	p.match(token.RBRACKET)
 	p.match(token.LPAREN)
-	res := &DrawStep{DrawOp: tok.Value}
+	res := &DrawStep{DrawOp: tok.Value, Style: []*DrawStyle{}}
 L:
 	for {
 		switch p.curToken.Type {
 		case token.STYLE:
-			res.Style = p.parseStyle()
+			res.Style = append(res.Style, p.parseStyle())
 		case token.FILTER:
 			res.Filter = p.parseFilter()
 		case token.RPAREN:
