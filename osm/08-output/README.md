@@ -29,3 +29,9 @@ Aufspalten der Ausgabe einer Linie oder eines Polygons in:
 speichert.
 
 **Screencast**: [Youtube](https://youtu.be/Uc_rFCia19s)
+
+## Mehrere Styles pro Zeichenobjekt
+
+Fehler in `NewStyle()` korrigiert
+
+**Screencast** [Youtube]()
