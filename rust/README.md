@@ -11,13 +11,13 @@
 
 ### Allgemein
 
-- rust-lang.org
-- rust-lang.org/learn
-- adventofcode.com
+- [rust-lang.org](https://www.rust-lang.org)
+- [rust-lang.org/learn](https://www.rust-lang.org/learn)
+- [adventofcode.com](https://www.adventofcode.com)
 
 ### Screencasts
 
-- github.com/jepoen/screencasts
+- [github.com/jepoen/screencasts](https://github.com/jepoen/screencasts/)
 
 
 ## Installation
