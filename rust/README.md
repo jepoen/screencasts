@@ -44,3 +44,7 @@ Algorithmen:
 - gewisse Sprachkenntnisse vorausgesetzt
 - ohne feste Reihenfolge
 - im wesentlichen Probleme aus Advent of Code
+
+## Ressourcen
+
+- [Installation, erste Schritte](intro)
