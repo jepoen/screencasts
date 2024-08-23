@@ -17,3 +17,11 @@
 - Übersetzen Quelltext: `rustc hello1.rs`
 - Kontrollanzeige: `ls -l`
 - Ausführen: `./hello1`
+
+## VSCodium
+
+- Installation nach [vscodium.com](https://vscodium.com)
+- Wechsel ins Projektverzeichnis
+- Start: `codium -a .`
+- Installation der Extension `rust-analyzer`
+- Konsole öffnen mit `Strg` `J`
