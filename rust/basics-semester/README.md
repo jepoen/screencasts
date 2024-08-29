@@ -33,6 +33,12 @@ hours   = min/MIN_HOUR (ganzzahlige Division)
 min_rem = min - hours * MIN_HOUR
 ~~~
 
+Einfacher: Division mit Rest:
+
+~~~
+min_rem = min % MIN_HOUR
+~~~
+
 Beispiel: AuP (cred_h = 6, stud_study_pcent = 80)
 
 ~~~
@@ -41,3 +47,6 @@ self_study_week_min = 6 * 45 * 80 / 100 = 270 * 80 / 100 = 216
 hours   = 216 / 60 = 3
 min_rem = 216 - 3 * 60 = 36
 ~~~
+
+
+
