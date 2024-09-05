@@ -25,21 +25,21 @@ grep -E \
 Alternativ str.`split()`
 
 ~~~mermaid
-flowchart
-S[[S]]
-Text(((Text)))
+flowchart LR;
+S[[S]];
+Text(((Text)));
 
-S-->|"[0..9]"|N1
-N1-->|"[0..9]"|N1
-N1-->|"[-]"|Dash
-Dash-->|"[0..9]"|N2
-N2-->|"[0..9]"|N2
-N2-->|"[ ]"|Bl1
-Bl1-->|"[a..z]"|Letter
-Letter-->|"[:]"|Colon
-Colon-->|"[ ]"|Bl2
-Bl2-->|"[a..z]"|Text
-Text-->|"[a..z]"|Text
+S-->|"[0..9]"|N1;
+N1-->|"[0..9]"|N1;
+N1-->|"[-]"|Dash;
+Dash-->|"[0..9]"|N2;
+N2-->|"[0..9]"|N2;
+N2-->|"[ ]"|Bl1;
+Bl1-->|"[a..z]"|Letter;
+Letter-->|"[:]"|Colon;
+Colon-->|"[ ]"|Bl2;
+Bl2-->|"[a..z]"|Text;
+Text-->|"[a..z]"|Text;
 ~~~
 
 ## Teil 2
