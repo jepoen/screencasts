@@ -43,11 +43,11 @@ Text -->|"[a..z]"| Text;
 ~~~
 
 ~~~mermaid
-flowchart LR;
+flowchart LR
 
-S --> A;
-A -->|"[0..9]"|A;
-A -->|"[-]"|B;
+S-->A
+A-->|"[0..9]"|A
+A-->|"[-]"|B
 ~~~
 
 ## Teil 2
