@@ -24,36 +24,24 @@ grep -E \
 
 Alternativ str.`split()`
 
-~~~
-flowchart LR;
-S[[S]];
-Text(((Text)));
-
-S -->|"[0..9]"| Na;
-Na -->|"[0..9]"| Na;
-Na -->|"[-]"| Dash;
-Dash -->|"[0..9]"| Nb;
-Nb -->|"[0..9]"| Nb;
-Nb -->|"[ ]"| Bla;
-Bla -->|"[a..z]"| Letter;
-Letter -->|"[:]"| Colon;
-Colon -->|"[ ]"| Blb;
-Blb -->|"[a..z]"| Text;
-Text -->|"[a..z]"| Text;
-~~~
-
 ~~~mermaid
-flowchart LR;
-S[[S]];
-Text(((Text)));
+flowchart LR
+S[[S]]
+Text(((Text)))
 
-S --> A;
-A -->|"[0..9]"| A;
-A -->|"[-]"| B;
-B -->|"[0..9]"| C;
-C -->|"[0..9]"| C;
-C -->|"[x]"| D;
+S -->|"[0..9]"| N1
+N1 -->|"[0..9]"| N1
+N1 -->|"[-]"| Dash
+Dash -->|"[0..9]"| N2
+N2 -->|"[0..9]"| N2
+N2 -->|"[ ]"| Bl1
+Bl1 -->|"[a..z]"| Letter
+Letter -->|"[:]"| Colon
+Colon -->|"[ ]"| Bl2
+Bl2 -->|"[a..z]"| Text
+Text -->|"[a..z]"| Text
 ~~~
+
 
 ## Teil 2
 
