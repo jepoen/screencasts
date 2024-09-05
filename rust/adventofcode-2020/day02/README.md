@@ -44,8 +44,6 @@ Text -->|"[a..z]"| Text;
 
 ~~~mermaid
 flowchart LR;
-S[[S]];
-Text(((Text)));
 
 S --> A;
 A -->|"[0..9]"|A;
