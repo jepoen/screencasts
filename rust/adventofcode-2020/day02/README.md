@@ -52,8 +52,8 @@ Na-->|"[0..9]"|Na;
 Na-->|"[-]"|Dash;
 Dash-->|"[0..9]"|Nb;
 Nb-->|"[0..9]"|Nb;
-Bla-->|"[a..z]"|Letter;
-Letter-->|"[:]"|Colon;
+Bla-->|"[a..z]"|Lt;
+Lt-->|"[:]"|Colon;
 ~~~
 
 ## Teil 2
