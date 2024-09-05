@@ -24,7 +24,7 @@ grep -E \
 
 Alternativ str.`split()`
 
-~~~mermaid
+~~~
 flowchart LR;
 S[[S]];
 Text(((Text)));
@@ -47,12 +47,12 @@ flowchart LR;
 S[[S]];
 Text(((Text)));
 
-S --> Na;
-Na-->|"[0..9]"| Na;
-Na-->|"[-]"| Dash;
-Dash-->|"[0..9]"| Nb;
-Nb-->|"[0..9]"| Nb;
-Nb-->|"[x]"| Bla;
+S --> A;
+A -->|"[0..9]"| A;
+A -->|"[-]"| B;
+B -->|"[0..9]"| C;
+C -->|"[0..9]"| C;
+C -->|"[x]"| D;
 ~~~
 
 ## Teil 2
