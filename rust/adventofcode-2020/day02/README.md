@@ -42,6 +42,10 @@ Bl2-->|"[a..z]"|Text;
 Text-->|"[a..z]"|Text;
 ~~~
 
+~~~mermaid
+info
+~~~
+
 ## Teil 2
 
 Text ist korrekt wenn text[pos1] == letter ex-oder text[pos2] == letter
