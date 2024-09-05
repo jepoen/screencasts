@@ -52,7 +52,6 @@ Na-->|"[0..9]"|Na;
 Na-->|"[-]"|Dash;
 Dash-->|"[0..9]"|Nb;
 Nb-->|"[0..9]"|Nb;
-Nb-->|"[ ]"|Bla;
 Bla-->|"[a..z]"|Letter;
 Letter-->|"[:]"|Colon;
 ~~~
