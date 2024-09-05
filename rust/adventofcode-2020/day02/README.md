@@ -27,7 +27,6 @@ Alternativ str.`split()`
 ~~~mermaid
 flowchart LR;
 S[[S]];
-Na[N1];
 Text(((Text)));
 
 S-->|"[0..9]"|Na;
