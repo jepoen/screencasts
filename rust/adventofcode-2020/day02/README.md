@@ -27,18 +27,19 @@ Alternativ str.`split()`
 ~~~mermaid
 flowchart LR;
 S[[S]];
+Na[N1];
 Text(((Text)));
 
-S-->|"[0..9]"|N1;
-N1-->|"[0..9]"|N1;
-N1-->|"[-]"|Dash;
-Dash-->|"[0..9]"|N2;
-N2-->|"[0..9]"|N2;
-N2-->|"[ ]"|Bl1;
-Bl1-->|"[a..z]"|Letter;
+S-->|"[0..9]"|Na;
+Na-->|"[0..9]"|Na;
+Na-->|"[-]"|Dash;
+Dash-->|"[0..9]"|Nb;
+Nb-->|"[0..9]"|Nb;
+Nb-->|"[ ]"|Bla;
+Bla-->|"[a..z]"|Letter;
 Letter-->|"[:]"|Colon;
-Colon-->|"[ ]"|Bl2;
-Bl2-->|"[a..z]"|Text;
+Colon-->|"[ ]"|Blb;
+Blb-->|"[a..z]"|Text;
 Text-->|"[a..z]"|Text;
 ~~~
 
