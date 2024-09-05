@@ -46,8 +46,8 @@ Text -->|"[a..z]"| Text;
 flowchart LR
 
 S-->A
-A-->|"[0..9]"|A
-A-->|"[-]"|B
+A-->A
+A-->B
 ~~~
 
 ## Teil 2
