@@ -24,6 +24,8 @@ grep -E \
 
 Alternativ str.`split()`
 
+Automat (in Github Preview nicht korrekt angezeigt):
+
 ~~~mermaid
 flowchart LR
 S[[S]]
