@@ -29,17 +29,17 @@ flowchart LR;
 S[[S]];
 Text(((Text)));
 
-S-->|"[0..9]"|Na;
-Na-->|"[0..9]"|Na;
-Na-->|"[-]"|Dash;
-Dash-->|"[0..9]"|Nb;
-Nb-->|"[0..9]"|Nb;
-Nb-->|"[ ]"|Bla;
-Bla-->|"[a..z]"|Letter;
-Letter-->|"[:]"|Colon;
-Colon-->|"[ ]"|Blb;
-Blb-->|"[a..z]"|Text;
-Text-->|"[a..z]"|Text;
+S -->|"[0..9]"| Na;
+Na -->|"[0..9]"| Na;
+Na -->|"[-]"| Dash;
+Dash -->|"[0..9]"| Nb;
+Nb -->|"[0..9]"| Nb;
+Nb -->|"[ ]"| Bla;
+Bla -->|"[a..z]"| Letter;
+Letter -->|"[:]"| Colon;
+Colon -->|"[ ]"| Blb;
+Blb -->|"[a..z]"| Text;
+Text -->|"[a..z]"| Text;
 ~~~
 
 ~~~mermaid
