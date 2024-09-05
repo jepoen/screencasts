@@ -43,7 +43,8 @@ Text-->|"[a..z]"|Text;
 ~~~
 
 ~~~mermaid
-info
+flowchart LR;
+S[[S]];
 ~~~
 
 ## Teil 2
