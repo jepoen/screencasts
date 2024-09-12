@@ -24,24 +24,30 @@ grep -E \
 
 Alternativ str.`split()`
 
-Automat (in Github Preview nicht korrekt angezeigt):
+Automat (die mit . markierten Knoten sind keine Zustände, sondern derzeit erforderlich zur korrekten Anzeige):
 
 ~~~mermaid
 flowchart LR
 S[[S]]
 Text(((Text)))
+X1((.))
+X2((.))
+X3((.))
 
 S -->|"[0..9]"| N1
-N1 -->|"[0..9]"| N1
+N1 -->|"[0..9]"| X1
+X1 --> N1
 N1 -->|"[-]"| Dash
 Dash -->|"[0..9]"| N2
-N2 -->|"[0..9]"| N2
+N2 -->|"[0..9]"| X2
+X2 --> N2
 N2 -->|"[ ]"| Bl1
 Bl1 -->|"[a..z]"| Letter
 Letter -->|"[:]"| Colon
 Colon -->|"[ ]"| Bl2
 Bl2 -->|"[a..z]"| Text
-Text -->|"[a..z]"| Text
+Text -->|"[a..z]"| X3
+X3 --> Text
 ~~~
 
 
