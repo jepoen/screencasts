@@ -53,4 +53,6 @@ X3 --> Text
 
 ## Teil 2
 
-Text ist korrekt wenn text[pos1] == letter ex-oder text[pos2] == letter
+Text ist korrekt wenn 
+- entweder text[pos1] == letter
+- oder text[pos2] == letter (XOR)
