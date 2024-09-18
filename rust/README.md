@@ -47,4 +47,12 @@ Algorithmen:
 
 ## Ressourcen
 
+### Kurs
+
 - [Installation, erste Schritte](intro)
+- [Grundlagen](basics)
+- [Funktionen](functions)
+
+## Algorithmen
+
+- [Advent of Code 2020](adventofcode-2020)
