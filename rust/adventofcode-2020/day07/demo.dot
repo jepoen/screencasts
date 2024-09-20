@@ -1,0 +1,5 @@
+digraph {
+    rankdir=LR;
+    A -> B[label="n"];
+    A -> C[label="m"];
+}
