@@ -51,6 +51,7 @@ Algorithmen:
 
 - [Installation, erste Schritte](intro)
 - [Grundlagen](basics)
+- [Logik und Verzweigungen](bool)
 - [Funktionen](functions)
 
 ## Algorithmen
