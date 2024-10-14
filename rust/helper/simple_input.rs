@@ -65,7 +65,7 @@ impl Input {
 
 // Verwendung:
 // mod simple_input;
-// simple_input::Input;
+// use simple_input::Input;
 //
 // fn main() {
 //   let mut inp = Input::new();
