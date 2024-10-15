@@ -53,6 +53,7 @@ Algorithmen:
 - [Grundlagen](basics)
 - [Logik und Verzweigungen](bool)
 - [Funktionen](functions)
+- [Felder](arrays)
 
 ## Algorithmen
 
