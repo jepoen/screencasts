@@ -26,9 +26,9 @@ Val:  1  2  4  7  9 11 11 13 15 21 42
 
 Algorithmus:
 - Ergänzen Feld virtuell um 2 Einträge:
-  - a[-1] = -infinity
-  - a[N]  = infinity
-- Bedingung erfüllt: a[-1] < suchwert ≤ a[N]
+  - a[-1] = -∞
+  - a[N]  = ∞
+- Bedingung immer erfüllt: a[-1] < suchwert ≤ a[N]
 - idx_links ← 0, idx_rechts ← N \
 
   (a[idx_links-1] < suchwert ≤ a[idx_rechts])
@@ -41,8 +41,9 @@ Algorithmus:
   if a[m] < suchwert:
     idx_links ← m + 1
   else: // a[m] ≥ suchwert
-    idx_rechts ← m  
+    idx_rechts ← m
   ~~~
 - Prüfe `idx_rechts`
   - < N: a[idx_rechts] ist der erste Wert ≥ suchwert
-  - = N: nicht gefunden, alle Werte im Feld sind kleiner als Suchwert
+  - = N: (entspricht a[N] = ∞) nicht gefunden, alle Werte im Feld sind
+    kleiner als der Suchwert
