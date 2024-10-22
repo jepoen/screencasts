@@ -39,7 +39,7 @@ T₂ = d₁ p₁ + m₁ = d₂ p₂ + m₂ = d₃ p₃ + m₃
 T₂ - T₁ = e₁ p₁ = e₂ p₂ = e₃ p₃ = p₁ p₂ p₃
 ~~~
 
-Algorithmus am Beispiel:
+Algorithmus am Beispiel (Achtung: im Beispiel der Aufgabe ist w₂ = 1, das Vorgehen ist aber identisch)
 ~~~
 t = 0
 step 7
