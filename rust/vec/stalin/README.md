@@ -64,3 +64,66 @@ Beispielprogramme: `stalin0.rs`, `stalin1.rs`
 - `for val in iterator {…}`, alternativ: `for val in vector {…}`
 
 Beispielprogramm: `stalin2.rs`
+
+## Problem
+
+Vec wird nach Funktionsruf weiter benötigt.
+
+Aufbau:
+
+~~~
+values:
+
+Stack           Heap
++------+      +----------------+
+|ptr   o--X-> | 1 2 3 4 5 ? ? ?|
++------+      +----------------+
+|len(5)|        ↑
++------|        |
++cap(8)|        |
++------+        |
+                |
+show(values)    |
+                |
+values2:        |
++------+        |
+|ptr   o--------+
++------+
+|len(5)|
++------|
++cap(8)|
++------+
+~~~
+
+Nach Funktionsende: values2 wird gelöscht, damit X ungültig
+⇒ Wert wird nicht kopiert, sondern verschoben.
+
+Lösung: »Verborgen« (borrow) des Vec-Objekts
+
+~~~
+values:
+
+Stack           Heap
++------+      +----------------+
+|ptr   o----> | 1 2 3 4 5 ? ? ?|
++------+      +----------------+
+|len(5)| 
++------|
++cap(8)|<-+
++------+  |
+          |
+&values2  |
+          |
++-------+ |
+|ptr    o-+
++-------+
+~~~
+
+Erkenntnisse:
+- Vec-Objekte und alle Objekte mit Heap-Speicher werden bei Zuweisungen
+  und Funktionsrufen »verschoben« und nicht kopiert
+- Objekte unter der alten Bindung (Variable) nicht mehr erreichbar
+- Lösung: Verborgen durch Übergabe von Referenzen
+- Dereferenzierung meist automatisch, falls nicht, dann
+  - entweder Muster `&var` für Referenz und `var` für Wertzugriff
+  - oder Muster `rvar` für Referenz und `*rvar` für Wertzugriff
