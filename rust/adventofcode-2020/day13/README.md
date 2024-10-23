@@ -71,3 +71,63 @@ for i in 2 .. N:
   delta ← delta * p[i]
 Rückgabe t
 ~~~
+
+## Teil 2 alternativ
+
+Problem:
+~~~
+t = c₁p₁ + m₁
+  = c₂p₂ + m₂
+
+Rust:
+
+t % p₁ = m₁
+t % p₂ = m₂
+
+Mathematik:
+
+t = m₁ (mod p₁)
+t = m₂ (mod p₂)
+t = m₃ (mod p₃)
+~~~
+[Chinesischer Restsatz](https://en.wikipedia.org/wiki/Chinese_remainder_theorem)
+
+Vorgehen:
+~~~
+ppp = p₁p₂p₃
+q₁ = ppp/p₁
+q₂ = ppp/p₂
+q₃ = ppp/p₃
+
+Lösen Diophantische Gleichung
+
+1 = d₁p₁ + r₁q₁ (benötigen r₁)
+1 = d₂p₂ + r₂q₂ (benötigen r₁)
+1 = d₃p₃ + r₃q₃ (benötigen r₁)
+
+s₁ = m₁r₁q₁
+s₂ = m₂r₂q₂
+s₃ = m₃r₃q₃
+
+t = s₁ + s₂ + s₃
+~~~
+
+[Diophantische Gleichung](https://en.wikipedia.org/wiki/Diophantine_equation) (einfachster Fall)
+~~~
+ax + by = 1; a, b ganz gegeben, x, y ganz gesucht
+
+a, b teilerfremd
+~~~
+Erweiterter Euklidscher Algorithmus
+~~~
+a = 7, b = 19
+lhs  x       y
+19 = 0 * 7 + 1 * 19
+ 7 = 1 * 7 + 0 * 19 | q=2 ⇒ 2-mal 2. Zeile abziehen
+ 5 =-2 * 7 + 1 * 19 | q=1 ⇒ 1-mal letzte Zeile abziehen
+ 2 = 3 * 7 - 1 * 19 | q=2 ⇒ 2-mal    "
+ 1 =-8 * 7 + 3 * 19 | q=2 ⇒ 2-mal    "
+ 0 =19 * 7 - 7 * 19 | korrekt 
+
+Lösung von 1 = x * 7 + y * 19
+~~~
