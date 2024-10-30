@@ -127,3 +127,16 @@ Erkenntnisse:
 - Dereferenzierung meist automatisch, falls nicht, dann
   - entweder Muster `&var` für Referenz und `var` für Wertzugriff
   - oder Muster `rvar` für Referenz und `*rvar` für Wertzugriff
+
+# Stalin-Sort inplace
+
+- Unerwünschte Werte sollen direkt aus dem Vec-Objekt entfernt werden
+- ohne Hilfsvektoren
+- Eingabe in Funktion
+
+Bemerkungen:
+
+- Übergabe mit `&mut vec_variable`
+- Funktionssignatur: `vec_variable: &mut Vec<Typ>`
+- Funktionen: `vec_variable.push(value)`, `vec_variable.remove(pos)`
+- `remove()` liefert entferntes Element
