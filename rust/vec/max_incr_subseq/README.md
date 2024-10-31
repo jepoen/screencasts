@@ -92,7 +92,7 @@ Rekonstruktion von hinten:
 
 ## Beispiel
 
-[Jahresmitteltemperaturen seit 1881](https://www.dwd.de/DE/leistungen/zeitreihen/zeitreihen.html)
+Jahresmitteltemperaturen seit 1881: [DWD](https://www.dwd.de/DE/leistungen/zeitreihen/zeitreihen.html)
 
 - Temperaturreihe Jahresmittel ab 1881
 - alle Werte mit 10 multipliziert
