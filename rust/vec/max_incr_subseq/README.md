@@ -45,8 +45,8 @@ Ind: 0 1 0 0 0 1 1 0 0
 
 - Indikator für jeden Index: 0 = Wert verwerfen, 1 = Wert übernehmen
 - Interpretation als Binärzahl mit n Stellen
-- 2^n solche Werte
-- Aufwand: 2^n, n = 10: 1024, n = 20: ≈ 1 Mio, n = 30: ≈ 1 Mrd.
+- 2ⁿ solche Werte
+- Aufwand: 2ⁿ, n = 10: 1024, n = 20: ≈ 1 Mio, n = 30: ≈ 1 Mrd.
 
 ## Dynamische Programmierung
 
