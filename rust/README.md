@@ -51,9 +51,13 @@ Algorithmen:
 
 - [Installation, erste Schritte](intro)
 - [Grundlagen](basics)
-- [Logik und Verzweigungen](bool)
 - [Funktionen](functions)
+- [Logik und Verzweigungen](bool)
+- [Schleifen](loops)
 - [Felder](arrays)
+- [Enum und Tupel](enum)
+- [Vec-Listen](vec)
+- [Mehrdimensionale Felder](vec2d)
 
 ## Algorithmen
 
