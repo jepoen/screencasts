@@ -8,11 +8,13 @@ Anwendung:
 Berechnung:
 
 - Direkte Formel:
+
 $$
 {n \choose k} = \frac{n!}{k!(n-k)!}
 $$
 
 - Rekursive Formel:
+
 $$
 \begin{align*}
 {n \choose k} &= {n-1 \choose k-1} + {n-1 \choose k} \\
@@ -22,6 +24,7 @@ $$
 $$
 
 - Wenn $n < 0$, $k < 0$ oder $k > n$ dann:
+
 $$
 {n \choose k} = 0
 $$
