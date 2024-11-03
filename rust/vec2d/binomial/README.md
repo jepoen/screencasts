@@ -30,6 +30,7 @@ $$
 $$
 
 Gegeben: n und k
+
 Gesucht: $n \choose k$ = binomial(n, k)
 
 ## Direkte Berechnung:
