@@ -8,22 +8,23 @@ Anwendung:
 Berechnung:
 
 - Direkte Formel:
-  $$
-  {n \choose k} = \frac{n!}{k!(n-k)!}
-  $$
+$$
+{n \choose k} = \frac{n!}{k!(n-k)!}
+$$
 
 - Rekursive Formel:
-  $$
-  \begin{align*}
-  {n \choose k} &= {n-1 \choose k-1} + {n-1 \choose k} \\
-  {n \choose 0} &= 1 \\
-  {n \choose n} &= 1 \\
-  \end{align*}
-  $$
-  Wenn $n < 0$, $k < 0$ oder $k > n$ dann:
-  $$
-  {n \choose k} = 0
-  $$
+$$
+\begin{align*}
+{n \choose k} &= {n-1 \choose k-1} + {n-1 \choose k} \\
+{n \choose 0} &= 1 \\
+{n \choose n} &= 1 \\
+\end{align*}
+$$
+
+- Wenn $n < 0$, $k < 0$ oder $k > n$ dann:
+$$
+{n \choose k} = 0
+$$
 
 Gegeben: n und k
 Gesucht: $n \choose k$ = binomial(n, k)
