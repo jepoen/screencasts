@@ -47,8 +47,10 @@ $$
 Dabei bedeutet:
 
 $$
-[X] = \sum_{i=1}^n x_i\\
-[XY] = \sum_{i=1}^n x_i y_i
+\begin{align*}
+[X] &= \sum_{i=1}^n x_i\\
+[XY] &= \sum_{i=1}^n x_i y_i
+\end{align*}
 $$
 
 Komplette Herleitung [PDF](linreg.pdf)
