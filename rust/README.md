@@ -58,6 +58,7 @@ Algorithmen:
 - [Enum und Tupel](enum)
 - [Vec-Listen](vec)
 - [Mehrdimensionale Felder](vec2d)
+- [Gleitpunktzahlen](float)
 
 ## Algorithmen
 
