@@ -57,10 +57,14 @@ $$
   a_{2,0} & a_{2,1} & a_{2,2}
 \end{pmatrix} \cdot
 \begin{pmatrix}
-x_0 \\ x_1 \\ x_2
+x_0 \\
+x_1 \\
+x_2
 \end{pmatrix} =
 \begin{pmatrix}
-r_0 \\ r_1 \\ r_2
+r_0 \\
+r_1 \\
+r_2
 \end{pmatrix}
 $$
 
