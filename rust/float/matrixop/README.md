@@ -26,10 +26,14 @@ $$
   a_{2,0} & a_{2,1} & a_{2,2}
 \end{pmatrix} \cdot
 \begin{pmatrix}
-  v_0 \\ v_1 \\ v_2
+  v_0 \\
+  v_1 \\
+  v_2
 \end{pmatrix} =
 \begin{pmatrix}
-  r_0 \\ r_1 \\ r_2
+  r_0 \\
+  r_1 \\
+  r_2
 \end{pmatrix}
 $$
 
