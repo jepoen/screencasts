@@ -27,12 +27,7 @@ $$
 \end{pmatrix} \cdot
 \begin{pmatrix}
   v_0 \\ v_1 \\ v_2
-\end{pmatrix}
-$$
-
-=
-
-$$
+\end{pmatrix} =
 \begin{pmatrix}
   r_0 \\ r_1 \\ r_2
 \end{pmatrix}
