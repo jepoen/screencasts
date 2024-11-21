@@ -17,6 +17,8 @@ Gesucht: Liste der enthaltenen Daten
 
 zusätzlich: Kommentarzeilen, die mit # beginnen
 
+Beispiel: [sort1.csv](sort1.csv)
+
 ## Zusammenfassung
 
 - Einlesen mit `read_line()` oder mit `lines()`

@@ -59,6 +59,7 @@ Algorithmen:
 - [Vec-Listen](vec)
 - [Mehrdimensionale Felder](vec2d)
 - [Gleitpunktzahlen](float)
+- [Strings](string)
 
 ## Algorithmen
 
