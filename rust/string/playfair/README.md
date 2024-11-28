@@ -1,5 +1,7 @@
 # Playfair Chiffre
 
+[Wikipedia](https://en.wikipedia.org/wiki/Playfair_cipher)
+
 Gegeben: Text, Schlüssel *oder* Chiffre, Schüssel
 
 Gesucht: Verschlüsselter Text *oder* Klartext
