@@ -58,3 +58,24 @@ erster Schritt: Lexer
   - rufe `expr()`
   - verbrauche `)`
   - geben expr-Result zur√ºck
+
+## Teil 2
+
+Neue Grammatik (Op entf√llt nun)
+
+~~~
+S = Expr
+
+Expr = Factor { "*"  Factor }
+
+Factor = Term { "+" Term }
+
+Term = Num
+     | "(" Expr ")"
+
+Num = "0" | "1" | ... | "9"
+~~~
+
+- `Token` anpassen
+- `expr()` anpassen
+- neue Funktion `factor()` im Parser
