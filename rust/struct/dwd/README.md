@@ -1,5 +1,8 @@
 # Struct – Wetterdaten
 
+- Quelle: [DWD](https://www.dwd.de/DE/leistungen/zeitreihen/zeitreihen.html)
+- CSV-Datei wurde manuell erzeugt
+
 Gegeben: CSV-Datei der Wetterdaten (year, temp, rain, sun)
 
 Gesucht:
