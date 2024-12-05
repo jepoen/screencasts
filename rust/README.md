@@ -60,6 +60,7 @@ Algorithmen:
 - [Mehrdimensionale Felder](vec2d)
 - [Gleitpunktzahlen](float)
 - [Strings](string)
+- [Structs](struct)
 
 ## Algorithmen
 
