@@ -62,6 +62,7 @@ Algorithmen:
 - [Strings](string)
 - [Structs](struct)
 - [Objektorientierte Programmierung](oop1)
+- [Graphen](graph)
 
 ## Algorithmen
 
