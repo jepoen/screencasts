@@ -1,0 +1,15 @@
+# https://www.destatis.de/DE/Themen/Branchen-Unternehmen/Energie/Erzeugung/Tabellen/bruttostromerzeugung.html
+# Quelle: Arbeitsgemeinschaft Energiebilanzen (AGEB). Stand: Dezember 2023.
+Energieträger,2019_MrdkWh,2019_%,2020_MrdkWh,2020_%,2021_MrdkWh,2021_%,2022_MrdkWh,2022_%,2023_MrdkWh,2023_%
+Braunkohle,114.0,18.7,91.7,16.0,110.1,18.8,116.2,20.1,87.5,17.0
+Steinkohle,57.5,9.5,42.8,7.4,54.6,9.3,63.7,11.0,44.1,8.6
+Kernenergie,75.1,12.3,64.4,11.2,69.1,11.8,34.7,6.0,7.2,1.4
+Erdgas,89.9,14.8,94.7,16.5,90.3,15.4,79.0,13.7,80.0,15.5
+Mineralölprodukte,4.8,0.8,4.7,0.8,4.6,0.8,5.7,1.0,4.9,1.0
+Windkraft,125.9,20.7,132.1,23.0,114.7,19.5,124.8,21.6,137.8,26.8
+Wasserkraft,20.1,3.3,18.7,3.3,19.7,3.4,17.6,3.0,19.5,3.8
+Biomasse,44.3,7.3,45.1,7.8,44.3,7.5,46.1,8.0,43.8,8.5
+Photovoltaik,45.2,7.4,49.5,8.6,49.3,8.4,60.3,10.4,61.1,11.9
+Hausmüll,5.8,1.0,5.8,1.0,5.8,1.0,5.6,1.0,5.5,1.1
+Geothermie,0.2,0.0,0.2,0.0,0.2,0.0,0.2,0.0,0.2,0.0
+Andere,25.4,4.2,24.8,4.3,24.5,4.2,23.8,4.1,23.1,4.5
