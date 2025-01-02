@@ -63,6 +63,7 @@ Algorithmen:
 - [Structs](struct)
 - [Objektorientierte Programmierung](oop1)
 - [Graphen](graph)
+- [Iteratoren](iterator)
 
 ## Algorithmen
 
