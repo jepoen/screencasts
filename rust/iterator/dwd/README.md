@@ -34,7 +34,9 @@ Iterator und Adapter: [Rust-Dokumentation](https://doc.rust-lang.org/std/iter/tr
 - 2 Spalten
 - `plot '{datei}' using {spalte} with lines`
 
-## Methoden für Iterator
+## Methoden für Iteratorerzeugung aus Vektor
+
+[Dokumentation](https://doc.rust-lang.org/std/vec/struct.Vec.html)
 
 - über alle Elemente: `into_iter()`, `iter()`, `iter_mut()`
 - Windows: `windows({len})`
